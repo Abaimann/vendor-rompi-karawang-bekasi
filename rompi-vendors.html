@@ -2,7 +2,13 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Viewport optimized for Realme, AMOLED & mobile Chrome -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <!-- Color scheme declaration to prevent Realme UI forced dark inversion -->
+    <meta name="color-scheme" content="dark only">
+    <meta name="supported-color-schemes" content="dark">
+    <meta name="theme-color" content="#090D16">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>VESTVENDORS // 100 Vendor Rompi Karawang-Bekasi</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -10,48 +16,63 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #090D16;
+            color-scheme: dark only;
+            --bg: #0A0E17;
             --surface: #111827;
             --surface-elevated: #1F2937;
-            --surface-card: #141E33;
-            --border: #2D3748;
+            --surface-card: #151D2E;
+            --border-card: #334155;
+            --border-card-hover: #38BDF8;
             --border-sharp: #000000;
-            --text-main: #F3F4F6;
-            --text-muted: #9CA3AF;
+            --text-main: #F8FAFC;
+            --text-muted: #94A3B8;
             --yellow: #FACC15;
             --orange: #FB923C;
             --cyan: #38BDF8;
             --green: #4ADE80;
-            --purple: #C084FC;
             --red: #F87171;
-            --shadow-hard: 4px 4px 0px #000000;
+            --shadow-hard: 3.5px 3.5px 0px #000000;
             --shadow-hard-sm: 2px 2px 0px #000000;
-            --shadow-hard-lg: 6px 6px 0px #000000;
+            --shadow-hard-lg: 5px 5px 0px #000000;
             --radius-sharp: 0px;
         }
 
-        * {
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             -webkit-tap-highlight-color: transparent;
         }
 
+        html {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+            background-color: var(--bg);
+            color-scheme: dark only;
+        }
+
         body {
-            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg);
             color: var(--text-main);
             min-height: 100vh;
             line-height: 1.45;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
             background-image: 
-                linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
-            background-size: 28px 28px;
-            padding-bottom: 90px;
+                linear-gradient(to right, rgba(255,255,255,0.035) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,0.035) 1px, transparent 1px);
+            background-size: 24px 24px;
+            padding-bottom: max(90px, calc(75px + env(safe-area-inset-bottom)));
         }
 
         .mono {
-            font-family: 'Space Mono', monospace;
+            font-family: 'Space Mono', 'Consolas', 'Courier New', monospace;
         }
 
         /* APP HEADER */
@@ -59,46 +80,51 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            background: rgba(9, 13, 22, 0.94);
-            backdrop-filter: blur(12px);
-            border-bottom: 3px solid #000000;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+            width: 100%;
+            background: rgba(10, 14, 23, 0.96);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 2.5px solid #000000;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.7);
+            padding-top: env(safe-area-inset-top);
         }
 
         .header-top {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 12px 16px;
+            padding: 10px 14px;
             max-width: 1200px;
             margin: 0 auto;
+            width: 100%;
         }
 
         .brand {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
+            min-width: 0;
         }
 
         .brand-badge {
             background: var(--yellow);
             color: #000000;
             font-weight: 900;
-            font-size: 14px;
-            padding: 4px 8px;
+            font-size: 13px;
+            padding: 4px 7px;
             border: 2px solid #000000;
             box-shadow: var(--shadow-hard-sm);
             text-transform: uppercase;
-            letter-spacing: -0.5px;
+            flex-shrink: 0;
         }
 
         .brand-title {
-            font-size: 17px;
+            font-size: 16px;
             font-weight: 900;
             letter-spacing: -0.5px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .brand-title span {
@@ -110,64 +136,67 @@
             color: var(--yellow);
             border: 2px solid #000000;
             box-shadow: var(--shadow-hard-sm);
-            padding: 4px 10px;
-            font-size: 12px;
+            padding: 4px 8px;
+            font-size: 11px;
             font-weight: 800;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
+            flex-shrink: 0;
         }
 
         .pulse-dot {
-            width: 8px;
-            height: 8px;
+            width: 7px;
+            height: 7px;
             background: var(--green);
             border-radius: 50%;
             display: inline-block;
-            box-shadow: 0 0 8px var(--green);
+            box-shadow: 0 0 6px var(--green);
             animation: pulse 1.6s infinite ease-in-out;
         }
 
         @keyframes pulse {
             0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.4); opacity: 0.5; }
+            50% { transform: scale(1.35); opacity: 0.5; }
         }
 
-        /* SEARCH & FILTER BAR */
+        /* SEARCH & CONTROLS */
         .controls-wrapper {
-            padding: 0 16px 12px 16px;
+            padding: 0 14px 10px 14px;
             max-width: 1200px;
             margin: 0 auto;
+            width: 100%;
         }
 
         .search-container {
             position: relative;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
+            width: 100%;
         }
 
         .search-input {
             width: 100%;
             background: var(--surface);
-            border: 2px solid #000000;
+            border: 2px solid #334155;
             color: #FFFFFF;
-            padding: 12px 44px 12px 14px;
-            font-size: 14px;
+            padding: 10px 40px 10px 12px;
+            font-size: 13.5px;
             font-weight: 600;
             border-radius: var(--radius-sharp);
-            box-shadow: var(--shadow-hard);
+            box-shadow: var(--shadow-hard-sm);
             outline: none;
-            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.2s ease;
         }
 
         .search-input:focus {
             border-color: var(--cyan);
-            box-shadow: 4px 4px 0px var(--cyan);
-            background: #0D1525;
+            box-shadow: 3px 3px 0px var(--cyan);
+            background: #0F172A;
         }
 
         .search-icon {
             position: absolute;
-            right: 14px;
+            right: 12px;
             top: 50%;
             transform: translateY(-50%);
             color: var(--yellow);
@@ -178,25 +207,31 @@
 
         .clear-btn {
             position: absolute;
-            right: 38px;
+            right: 34px;
             top: 50%;
             transform: translateY(-50%);
-            background: transparent;
-            border: none;
-            color: var(--text-muted);
+            background: #1E293B;
+            border: 1px solid #334155;
+            color: #CBD5E1;
+            width: 22px;
+            height: 22px;
+            font-size: 11px;
+            font-weight: 900;
             cursor: pointer;
-            padding: 4px;
             display: none;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* HORIZONTAL SCROLL CHIPS (MOBILE OPTIMIZED) */
+        /* HORIZONTAL SCROLL CHIPS */
         .chip-scroll {
             display: flex;
-            gap: 8px;
+            gap: 6px;
             overflow-x: auto;
             scrollbar-width: none;
-            padding-bottom: 4px;
-            -ms-overflow-style: none;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 2px;
+            width: 100%;
         }
 
         .chip-scroll::-webkit-scrollbar {
@@ -207,48 +242,46 @@
             white-space: nowrap;
             background: var(--surface);
             color: var(--text-muted);
-            border: 2px solid #000000;
-            padding: 6px 12px;
-            font-size: 12px;
+            border: 1.5px solid #334155;
+            padding: 5px 10px;
+            font-size: 11px;
             font-weight: 800;
             text-transform: uppercase;
             cursor: pointer;
             box-shadow: var(--shadow-hard-sm);
             transition: all 0.15s ease;
-            display: flex;
-            align-items: center;
-            gap: 6px;
+            flex-shrink: 0;
+            border-radius: var(--radius-sharp);
         }
 
-        .chip:hover {
-            background: var(--surface-elevated);
-            color: #FFFFFF;
-            transform: translate(-1px, -1px);
-            box-shadow: 3px 3px 0px #000000;
+        .chip:active {
+            transform: translate(1px, 1px);
+            box-shadow: 1px 1px 0px #000000;
         }
 
         .chip.active {
             background: var(--yellow);
             color: #000000;
             border-color: #000000;
-            box-shadow: 2px 2px 0px #000000;
-            transform: translate(1px, 1px);
+            font-weight: 900;
         }
 
         .chip-tag.active {
             background: var(--cyan);
             color: #000000;
+            border-color: #000000;
         }
 
         /* STATS STRIP */
         .stats-strip {
             max-width: 1200px;
-            margin: 14px auto 8px auto;
-            padding: 0 16px;
+            margin: 10px auto 6px auto;
+            padding: 0 14px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            font-size: 12px;
+            font-size: 11.5px;
+            width: 100%;
         }
 
         .stats-text {
@@ -265,109 +298,105 @@
             border: 1px dashed var(--orange);
             color: var(--orange);
             font-size: 11px;
-            font-weight: 700;
-            padding: 3px 8px;
+            font-weight: 800;
+            padding: 3px 7px;
             cursor: pointer;
             display: none;
+            border-radius: var(--radius-sharp);
         }
 
-        /* GRID OF VENDOR CARDS */
+        /* MAIN GRID */
         .vendor-grid {
             max-width: 1200px;
-            margin: 8px auto;
-            padding: 0 16px;
+            margin: 6px auto;
+            padding: 0 14px;
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 16px;
+            grid-template-columns: minmax(0, 1fr);
+            gap: 12px;
+            width: 100%;
         }
 
-        @media (min-width: 640px) {
+        @media (min-width: 600px) {
             .vendor-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 14px;
             }
         }
 
-        @media (min-width: 1024px) {
+        @media (min-width: 960px) {
             .vendor-grid {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 16px;
             }
         }
 
-        /* SHARP VENDOR CARD */
+        /* SHARP VENDOR CARD (AMOLED OPTIMIZED) */
         .card {
             background: var(--surface-card);
-            border: 2.5px solid #000000;
+            border: 2px solid var(--border-card);
             box-shadow: var(--shadow-hard);
-            padding: 16px;
+            padding: 14px;
             position: relative;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
-            animation: cardAppear 0.35s ease-out forwards;
-        }
-
-        @keyframes cardAppear {
-            from {
-                opacity: 0;
-                transform: translateY(14px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            min-width: 0;
+            width: 100%;
+            border-radius: var(--radius-sharp);
+            transition: transform 0.18s ease, border-color 0.18s ease;
         }
 
         .card:hover {
-            transform: translate(-3px, -3px);
-            box-shadow: var(--shadow-hard-lg);
             border-color: var(--cyan);
+            box-shadow: var(--shadow-hard-lg);
         }
 
         .card-top {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             justify-content: space-between;
-            gap: 8px;
-            margin-bottom: 8px;
+            gap: 6px;
+            margin-bottom: 6px;
         }
 
         .card-id {
             background: #000000;
             color: var(--yellow);
             font-weight: 900;
-            font-size: 11px;
-            padding: 3px 7px;
-            border: 1px solid var(--border);
+            font-size: 10.5px;
+            padding: 2.5px 6px;
+            border: 1px solid #334155;
             display: inline-block;
         }
 
         .card-region {
-            background: var(--surface-elevated);
+            background: #1E293B;
             color: var(--cyan);
-            border: 1px solid #000000;
-            font-size: 10px;
+            border: 1px solid #334155;
+            font-size: 9.5px;
             font-weight: 800;
-            padding: 3px 6px;
+            padding: 2.5px 5px;
             text-transform: uppercase;
         }
 
         .card-title {
-            font-size: 16.5px;
+            font-size: 15.5px;
             font-weight: 800;
             color: #FFFFFF;
-            margin-bottom: 4px;
+            margin-bottom: 3px;
             line-height: 1.25;
-            letter-spacing: -0.3px;
+            letter-spacing: -0.2px;
+            word-break: break-word;
         }
 
         .card-location {
-            font-size: 12px;
+            font-size: 11.5px;
             color: var(--text-muted);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 4px;
+            word-break: break-word;
         }
 
         .card-location svg {
@@ -376,100 +405,109 @@
         }
 
         .card-spec {
-            background: #0B1220;
+            background: #0D1525;
             border-left: 3px solid var(--yellow);
-            border-top: 1px solid var(--border);
-            border-right: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-            padding: 8px 10px;
-            margin-bottom: 10px;
+            border-top: 1px solid #1E293B;
+            border-right: 1px solid #1E293B;
+            border-bottom: 1px solid #1E293B;
+            padding: 6px 8px;
+            margin-bottom: 8px;
         }
 
         .card-spec-label {
-            font-size: 10px;
+            font-size: 9.5px;
             text-transform: uppercase;
             font-weight: 800;
             color: var(--yellow);
-            margin-bottom: 2px;
+            margin-bottom: 1px;
         }
 
         .card-spec-value {
-            font-size: 12.5px;
+            font-size: 12px;
             font-weight: 700;
             color: #E2E8F0;
+            word-break: break-word;
         }
 
         .card-desc {
-            font-size: 12px;
+            font-size: 11.5px;
             color: #94A3B8;
-            margin-bottom: 14px;
-            line-height: 1.45;
+            margin-bottom: 10px;
+            line-height: 1.4;
             flex-grow: 1;
+            word-break: break-word;
         }
 
         .card-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 5px;
-            margin-bottom: 14px;
+            gap: 4px;
+            margin-bottom: 10px;
         }
 
         .tag-pill {
-            font-size: 10px;
+            font-size: 9.5px;
             font-weight: 800;
-            padding: 2px 6px;
-            border: 1px solid #000000;
+            padding: 2px 5px;
+            border: 1px solid #334155;
             background: #1E293B;
             color: #CBD5E1;
             text-transform: uppercase;
+            border-radius: 0px;
         }
 
         .tag-pill.tag-safety {
-            background: rgba(250, 204, 21, 0.15);
+            background: rgba(250, 204, 21, 0.12);
             color: var(--yellow);
-            border-color: rgba(250, 204, 21, 0.4);
+            border-color: rgba(250, 204, 21, 0.5);
         }
 
         .tag-pill.tag-tactical {
-            background: rgba(56, 189, 248, 0.15);
+            background: rgba(56, 189, 248, 0.12);
             color: var(--cyan);
-            border-color: rgba(56, 189, 248, 0.4);
+            border-color: rgba(56, 189, 248, 0.5);
         }
 
         .tag-pill.tag-pabrik {
-            background: rgba(248, 113, 113, 0.15);
+            background: rgba(248, 113, 113, 0.12);
             color: var(--red);
-            border-color: rgba(248, 113, 113, 0.4);
+            border-color: rgba(248, 113, 113, 0.5);
         }
 
-        /* ACTION BUTTONS (MOBILE FRIENDLY) */
+        /* ACTIONS (FIT PERFECTLY ON 360px-400px PHONES) */
         .card-actions {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-            padding-top: 10px;
-            border-top: 1.5px dashed var(--border);
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: 6px;
+            padding-top: 8px;
+            border-top: 1.5px dashed #26334D;
+            width: 100%;
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
-            padding: 10px 12px;
-            font-size: 12px;
+            gap: 5px;
+            padding: 8px 6px;
+            font-size: 11px;
             font-weight: 800;
             text-decoration: none;
             text-transform: uppercase;
-            border: 2px solid #000000;
+            border: 1.5px solid #000000;
             box-shadow: var(--shadow-hard-sm);
             cursor: pointer;
-            transition: all 0.15s ease;
-            min-height: 40px;
+            transition: all 0.12s ease;
+            min-height: 38px;
+            border-radius: var(--radius-sharp);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            width: 100%;
         }
 
         .btn:active {
-            transform: translate(2px, 2px);
+            transform: translate(1px, 1px);
             box-shadow: 0px 0px 0px #000000;
         }
 
@@ -478,148 +516,59 @@
             color: #000000;
         }
 
-        .btn-primary:hover {
-            background: #FDE047;
-        }
-
-        .btn-secondary {
-            background: var(--surface-elevated);
-            color: #FFFFFF;
-        }
-
-        .btn-secondary:hover {
-            background: #374151;
-        }
-
         .btn-maps {
-            background: #0F172A;
+            background: #1E293B;
             color: var(--cyan);
-            border-color: #000000;
+            border-color: #334155;
         }
 
         .btn-wa {
-            background: #166534;
-            color: #DCFCE7;
-            border-color: #000000;
-        }
-
-        .btn-wa:hover {
             background: #15803D;
-        }
-
-        /* MODAL / BOTTOM SHEET (MOBILE DETAIL) */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.78);
-            backdrop-filter: blur(4px);
-            z-index: 200;
-            display: none;
-            align-items: flex-end;
-            justify-content: center;
-            animation: fadeIn 0.2s ease-out;
-        }
-
-        @media (min-width: 640px) {
-            .modal-overlay {
-                align-items: center;
-            }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .modal-sheet {
-            background: var(--surface);
-            border: 3px solid #000000;
-            box-shadow: var(--shadow-hard-lg);
-            width: 100%;
-            max-width: 560px;
-            max-height: 90vh;
-            overflow-y: auto;
-            padding: 24px;
-            animation: slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        @keyframes slideUp {
-            from { transform: translateY(100%); }
-            to { transform: translateY(0); }
-        }
-
-        .modal-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 16px;
-            border-bottom: 2px solid #000000;
-            padding-bottom: 12px;
-        }
-
-        .modal-close-btn {
-            background: var(--red);
             color: #FFFFFF;
-            border: 2px solid #000000;
-            box-shadow: var(--shadow-hard-sm);
-            width: 32px;
-            height: 32px;
-            font-weight: 900;
-            font-size: 16px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-body {
-            font-size: 13.5px;
-            line-height: 1.5;
+            border-color: #000000;
         }
 
         /* EMPTY STATE */
         .empty-state {
             display: none;
-            max-width: 500px;
-            margin: 40px auto;
-            padding: 30px 20px;
+            max-width: 480px;
+            margin: 30px auto;
+            padding: 24px 16px;
             text-align: center;
             background: var(--surface);
-            border: 2.5px solid #000000;
+            border: 2px solid var(--border-card);
             box-shadow: var(--shadow-hard);
         }
 
         .empty-icon {
-            font-size: 40px;
-            margin-bottom: 10px;
+            font-size: 36px;
+            margin-bottom: 8px;
         }
 
         .empty-title {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 800;
             color: #FFFFFF;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
 
         .empty-sub {
             color: var(--text-muted);
-            font-size: 13px;
-            margin-bottom: 16px;
+            font-size: 12px;
+            margin-bottom: 14px;
         }
 
-        /* BOTTOM FLOATING BAR (MOBILE QUICK INFO) */
+        /* BOTTOM FLOATING BAR */
         .bottom-bar {
             position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
-            background: rgba(17, 24, 39, 0.95);
+            width: 100%;
+            background: rgba(10, 14, 23, 0.96);
             backdrop-filter: blur(10px);
             border-top: 2px solid #000000;
-            padding: 10px 16px;
+            padding: 8px 14px calc(8px + env(safe-area-inset-bottom)) 14px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -627,50 +576,22 @@
         }
 
         .bottom-bar-left {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 700;
+            white-space: nowrap;
         }
 
         .scroll-top-btn {
             background: var(--yellow);
             color: #000000;
-            border: 2px solid #000000;
+            border: 1.5px solid #000000;
             box-shadow: var(--shadow-hard-sm);
-            padding: 6px 12px;
-            font-size: 11px;
+            padding: 6px 10px;
+            font-size: 10.5px;
             font-weight: 900;
             text-transform: uppercase;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        /* TOAST NOTIFICATION */
-        .toast {
-            position: fixed;
-            bottom: 80px;
-            left: 50%;
-            transform: translateX(-50%) translateY(20px);
-            background: #000000;
-            color: var(--yellow);
-            border: 2px solid var(--yellow);
-            padding: 8px 16px;
-            font-size: 12px;
-            font-weight: 800;
-            box-shadow: var(--shadow-hard);
-            z-index: 300;
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.25s ease;
-        }
-
-        .toast.show {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
+            border-radius: var(--radius-sharp);
         }
     </style>
 </head>
@@ -685,17 +606,17 @@
             </div>
             <div class="counter-badge mono">
                 <span class="pulse-dot"></span>
-                <span id="activeCount">100</span> / 100 VENDOR
+                <span id="activeCount">100</span> / 100
             </div>
         </div>
 
         <div class="controls-wrapper">
             <!-- SEARCH BAR -->
             <div class="search-container">
-                <input type="text" id="searchInput" class="search-input" placeholder="Cari vendor, wilayah (contoh: KIIC, MM2100, K3, Taslan)..." autocomplete="off">
-                <button id="clearSearch" class="clear-btn" title="Hapus pencarian">✕</button>
+                <input type="text" id="searchInput" class="search-input" placeholder="Cari nama, area, K3, Taslan, Cikarang..." autocomplete="off">
+                <button id="clearSearch" class="clear-btn" title="Hapus">✕</button>
                 <div class="search-icon">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                 </div>
             </div>
 
@@ -712,11 +633,11 @@
             <div class="chip-scroll" id="tagFilters">
                 <button class="chip chip-tag active" data-tag="ALL">SEMUA KATEGORI</button>
                 <button class="chip chip-tag" data-tag="Safety K3">⚡ SAFETY K3</button>
-                <button class="chip chip-tag" data-tag="Tactical">🛠 TACTICAL / SAKU</button>
-                <button class="chip chip-tag" data-tag="Pabrik">🏭 WEARPACK PABRIK</button>
-                <button class="chip chip-tag" data-tag="Komunitas">🏍 TASLAN / BIKERS</button>
-                <button class="chip chip-tag" data-tag="Kantor/PDH">👔 KANTOR & DINAS</button>
-                <button class="chip chip-tag" data-tag="Jaring">🦺 JARING MESH</button>
+                <button class="chip chip-tag" data-tag="Tactical">🛠 TACTICAL</button>
+                <button class="chip chip-tag" data-tag="Pabrik">🏭 WEARPACK</button>
+                <button class="chip chip-tag" data-tag="Komunitas">🏍 TASLAN/BIKERS</button>
+                <button class="chip chip-tag" data-tag="Kantor/PDH">👔 KANTOR/DINAS</button>
+                <button class="chip chip-tag" data-tag="Jaring">🦺 JARING</button>
             </div>
         </div>
     </header>
@@ -724,9 +645,9 @@
     <!-- STATS STRIP -->
     <div class="stats-strip">
         <div class="stats-text mono">
-            MENAMPILKAN: <strong id="resultStats">100 VENDOR DITEMUKAN</strong>
+            STATUS: <strong id="resultStats">100 VENDOR AKTIF</strong>
         </div>
-        <button id="resetFilters" class="reset-filter-btn">RESET FILTER ✕</button>
+        <button id="resetFilters" class="reset-filter-btn">RESET ✕</button>
     </div>
 
     <!-- MAIN VENDOR GRID -->
@@ -738,8 +659,8 @@
     <div class="empty-state" id="emptyState">
         <div class="empty-icon">🔍</div>
         <div class="empty-title">TIDAK ADA VENDOR COCOK</div>
-        <div class="empty-sub">Coba ubah kata kunci pencarian atau bersihkan filter wilayah/kategori yang aktif.</div>
-        <button class="btn btn-primary" onclick="resetAllFilters()">RESET SEMUA PENCARIAN</button>
+        <div class="empty-sub">Coba ubah kata kunci atau tekan tombol reset di bawah.</div>
+        <button class="btn btn-primary" onclick="resetAllFilters()" style="max-width:200px; margin:0 auto;">RESET FILTER</button>
     </div>
 
     <!-- BOTTOM FLOATING ACTION BAR -->
@@ -752,42 +673,6 @@
             ▲ KE ATAS
         </button>
     </div>
-
-    <!-- VENDOR DETAIL MODAL / SHEET -->
-    <div class="modal-overlay" id="detailModal">
-        <div class="modal-sheet">
-            <div class="modal-header">
-                <div class="mono" id="modalId" style="color: var(--yellow); font-weight:900; font-size:13px;">[#01] KARAWANG</div>
-                <button class="modal-close-btn" onclick="closeModal()">✕</button>
-            </div>
-            <div class="modal-body">
-                <h2 id="modalTitle" style="color:#FFF; font-size:20px; font-weight:900; margin-bottom:4px;">Nama Vendor</h2>
-                <div id="modalLoc" style="color:var(--cyan); font-size:13px; font-weight:700; margin-bottom:14px;">Wilayah</div>
-                
-                <div style="background:#0D1525; border-left:3px solid var(--yellow); padding:10px; margin-bottom:12px;">
-                    <div style="font-size:11px; color:var(--yellow); font-weight:800; text-transform:uppercase;">SPESIALISASI ROMPI:</div>
-                    <div id="modalSpec" style="font-size:14px; font-weight:700; color:#FFF;">Spesialisasi detail</div>
-                </div>
-
-                <div id="modalDesc" style="color:#CBD5E1; margin-bottom:16px; line-height:1.5;">Deskripsi lengkap</div>
-
-                <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:20px;" id="modalTags">
-                    <!-- Tags rendered here -->
-                </div>
-
-                <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
-                    <a id="modalWebBtn" href="#" target="_blank" class="btn btn-primary">🌐 BUKA WEB</a>
-                    <a id="modalMapsBtn" href="#" target="_blank" class="btn btn-maps">📍 BUKA MAPS</a>
-                </div>
-                <div style="margin-top:10px;">
-                    <a id="modalWaBtn" href="#" target="_blank" class="btn btn-wa" style="width:100%;">💬 HUBUNGI VIA WHATSAPP</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- TOAST -->
-    <div class="toast" id="toastMessage">Tautan Disalin!</div>
 
     <!-- APPLICATION JAVASCRIPT -->
     <script>
@@ -2338,6 +2223,9 @@
                 return `<span class="${cls}">${t}</span>`;
             }).join('');
 
+            // Clean button label for mobile (avoid long domain overflow)
+            const webBtnText = v.linkLabel.includes('Google') ? '🗺️ INFO LOKASI' : '🌐 BUKA WEB';
+
             return `
             <div class="card" data-id="${v.id}">
                 <div>
@@ -2349,7 +2237,7 @@
                     <h3 class="card-title">${v.name}</h3>
 
                     <div class="card-location">
-                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                         <span>${v.location}</span>
                     </div>
 
@@ -2366,10 +2254,10 @@
                 </div>
 
                 <div class="card-actions">
-                    <a href="${v.linkUrl}" target="_blank" rel="noopener" class="btn btn-primary" title="Buka website atau link katalog">
-                        🌐 ${v.linkLabel}
+                    <a href="${v.linkUrl}" target="_blank" rel="noopener" class="btn btn-primary" title="${v.linkLabel}">
+                        ${webBtnText}
                     </a>
-                    <a href="${v.mapsUrl}" target="_blank" rel="noopener" class="btn btn-maps" title="Navigasi ke Google Maps">
+                    <a href="${v.mapsUrl}" target="_blank" rel="noopener" class="btn btn-maps" title="Buka navigasi Google Maps">
                         📍 PETA MAPS
                     </a>
                 </div>
@@ -2382,20 +2270,9 @@
             const query = searchQuery.toLowerCase().trim();
 
             const filtered = VENDORS.filter(v => {
-                // Region check
-                if (currentRegion !== 'ALL') {
-                    if (currentRegion === 'Karawang' && v.region !== 'Karawang') return false;
-                    if (currentRegion === 'Cikarang' && v.region !== 'Cikarang') return false;
-                    if (currentRegion === 'Tambun-Cibitung' && v.region !== 'Tambun-Cibitung') return false;
-                    if (currentRegion === 'Kota Bekasi' && v.region !== 'Kota Bekasi') return false;
-                }
+                if (currentRegion !== 'ALL' && v.region !== currentRegion) return false;
+                if (currentTag !== 'ALL' && !v.tags.includes(currentTag)) return false;
 
-                // Tag check
-                if (currentTag !== 'ALL' && !v.tags.includes(currentTag)) {
-                    return false;
-                }
-
-                // Search query check
                 if (query.length > 0) {
                     const matchName = v.name.toLowerCase().includes(query);
                     const matchLoc = v.location.toLowerCase().includes(query);
@@ -2410,7 +2287,6 @@
                 return true;
             });
 
-            // Render
             if (filtered.length === 0) {
                 vendorGrid.innerHTML = '';
                 emptyState.style.display = 'block';
@@ -2419,11 +2295,9 @@
                 vendorGrid.innerHTML = filtered.map(renderCard).join('');
             }
 
-            // Update stats
             activeCount.innerText = filtered.length;
-            resultStats.innerText = `${filtered.length} DARI 100 VENDOR AKTIF`;
+            resultStats.innerText = `${filtered.length} DARI 100 VENDOR`;
 
-            // Reset button visibility
             if (currentRegion !== 'ALL' || currentTag !== 'ALL' || query.length > 0) {
                 resetFiltersBtn.style.display = 'inline-block';
             } else {
@@ -2454,7 +2328,7 @@
         // Search Input Handling
         searchInput.addEventListener('input', (e) => {
             searchQuery = e.target.value;
-            clearSearchBtn.style.display = searchQuery.length > 0 ? 'block' : 'none';
+            clearSearchBtn.style.display = searchQuery.length > 0 ? 'flex' : 'none';
             filterVendors();
         });
 
@@ -2486,44 +2360,6 @@
         }
 
         resetFiltersBtn.addEventListener('click', resetAllFilters);
-
-        // Toast
-        function showToast(text) {
-            const t = document.getElementById('toastMessage');
-            t.innerText = text;
-            t.classList.add('show');
-            setTimeout(() => {
-                t.classList.remove('show');
-            }, 2200);
-        }
-
-        // Card Modal
-        function openModal(id) {
-            const v = VENDORS.find(item => item.id === id);
-            if (!v) return;
-
-            document.getElementById('modalId').innerText = `[#${String(v.id).padStart(3, '0')}] // ${v.region.toUpperCase()}`;
-            document.getElementById('modalTitle').innerText = v.name;
-            document.getElementById('modalLoc').innerText = `📍 ${v.location}`;
-            document.getElementById('modalSpec').innerText = v.specialty;
-            document.getElementById('modalDesc').innerText = v.description;
-
-            document.getElementById('modalTags').innerHTML = v.tags.map(t => `<span class="tag-pill">${t}</span>`).join('');
-
-            document.getElementById('modalWebBtn').href = v.linkUrl;
-            document.getElementById('modalMapsBtn').href = v.mapsUrl;
-            document.getElementById('modalWaBtn').href = `https://wa.me/${v.wa}?text=Halo%20${encodeURIComponent(v.name)},%20saya%20ingin%20konsultasi%20pembuatan%20rompi%20custom.`;
-
-            document.getElementById('detailModal').style.display = 'flex';
-        }
-
-        function closeModal() {
-            document.getElementById('detailModal').style.display = 'none';
-        }
-
-        document.getElementById('detailModal').addEventListener('click', (e) => {
-            if (e.target.id === 'detailModal') closeModal();
-        });
 
         // Initial render
         filterVendors();
