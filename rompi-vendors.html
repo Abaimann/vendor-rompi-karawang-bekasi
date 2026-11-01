@@ -1,0 +1,2532 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>VESTVENDORS // 100 Vendor Rompi Karawang-Bekasi</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #090D16;
+            --surface: #111827;
+            --surface-elevated: #1F2937;
+            --surface-card: #141E33;
+            --border: #2D3748;
+            --border-sharp: #000000;
+            --text-main: #F3F4F6;
+            --text-muted: #9CA3AF;
+            --yellow: #FACC15;
+            --orange: #FB923C;
+            --cyan: #38BDF8;
+            --green: #4ADE80;
+            --purple: #C084FC;
+            --red: #F87171;
+            --shadow-hard: 4px 4px 0px #000000;
+            --shadow-hard-sm: 2px 2px 0px #000000;
+            --shadow-hard-lg: 6px 6px 0px #000000;
+            --radius-sharp: 0px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            min-height: 100vh;
+            line-height: 1.45;
+            background-image: 
+                linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 28px 28px;
+            padding-bottom: 90px;
+        }
+
+        .mono {
+            font-family: 'Space Mono', monospace;
+        }
+
+        /* APP HEADER */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(9, 13, 22, 0.94);
+            backdrop-filter: blur(12px);
+            border-bottom: 3px solid #000000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+        }
+
+        .header-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand-badge {
+            background: var(--yellow);
+            color: #000000;
+            font-weight: 900;
+            font-size: 14px;
+            padding: 4px 8px;
+            border: 2px solid #000000;
+            box-shadow: var(--shadow-hard-sm);
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+        }
+
+        .brand-title {
+            font-size: 17px;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .brand-title span {
+            color: var(--cyan);
+        }
+
+        .counter-badge {
+            background: var(--surface-elevated);
+            color: var(--yellow);
+            border: 2px solid #000000;
+            box-shadow: var(--shadow-hard-sm);
+            padding: 4px 10px;
+            font-size: 12px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--green);
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 8px var(--green);
+            animation: pulse 1.6s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.4); opacity: 0.5; }
+        }
+
+        /* SEARCH & FILTER BAR */
+        .controls-wrapper {
+            padding: 0 16px 12px 16px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .search-container {
+            position: relative;
+            margin-bottom: 10px;
+        }
+
+        .search-input {
+            width: 100%;
+            background: var(--surface);
+            border: 2px solid #000000;
+            color: #FFFFFF;
+            padding: 12px 44px 12px 14px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: var(--radius-sharp);
+            box-shadow: var(--shadow-hard);
+            outline: none;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .search-input:focus {
+            border-color: var(--cyan);
+            box-shadow: 4px 4px 0px var(--cyan);
+            background: #0D1525;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--yellow);
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .clear-btn {
+            position: absolute;
+            right: 38px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 4px;
+            display: none;
+        }
+
+        /* HORIZONTAL SCROLL CHIPS (MOBILE OPTIMIZED) */
+        .chip-scroll {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            padding-bottom: 4px;
+            -ms-overflow-style: none;
+        }
+
+        .chip-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .chip {
+            white-space: nowrap;
+            background: var(--surface);
+            color: var(--text-muted);
+            border: 2px solid #000000;
+            padding: 6px 12px;
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: var(--shadow-hard-sm);
+            transition: all 0.15s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .chip:hover {
+            background: var(--surface-elevated);
+            color: #FFFFFF;
+            transform: translate(-1px, -1px);
+            box-shadow: 3px 3px 0px #000000;
+        }
+
+        .chip.active {
+            background: var(--yellow);
+            color: #000000;
+            border-color: #000000;
+            box-shadow: 2px 2px 0px #000000;
+            transform: translate(1px, 1px);
+        }
+
+        .chip-tag.active {
+            background: var(--cyan);
+            color: #000000;
+        }
+
+        /* STATS STRIP */
+        .stats-strip {
+            max-width: 1200px;
+            margin: 14px auto 8px auto;
+            padding: 0 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 12px;
+        }
+
+        .stats-text {
+            color: var(--text-muted);
+            font-weight: 700;
+        }
+
+        .stats-text strong {
+            color: var(--yellow);
+        }
+
+        .reset-filter-btn {
+            background: transparent;
+            border: 1px dashed var(--orange);
+            color: var(--orange);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 8px;
+            cursor: pointer;
+            display: none;
+        }
+
+        /* GRID OF VENDOR CARDS */
+        .vendor-grid {
+            max-width: 1200px;
+            margin: 8px auto;
+            padding: 0 16px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        @media (min-width: 640px) {
+            .vendor-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .vendor-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* SHARP VENDOR CARD */
+        .card {
+            background: var(--surface-card);
+            border: 2.5px solid #000000;
+            box-shadow: var(--shadow-hard);
+            padding: 16px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+            animation: cardAppear 0.35s ease-out forwards;
+        }
+
+        @keyframes cardAppear {
+            from {
+                opacity: 0;
+                transform: translateY(14px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: var(--shadow-hard-lg);
+            border-color: var(--cyan);
+        }
+
+        .card-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .card-id {
+            background: #000000;
+            color: var(--yellow);
+            font-weight: 900;
+            font-size: 11px;
+            padding: 3px 7px;
+            border: 1px solid var(--border);
+            display: inline-block;
+        }
+
+        .card-region {
+            background: var(--surface-elevated);
+            color: var(--cyan);
+            border: 1px solid #000000;
+            font-size: 10px;
+            font-weight: 800;
+            padding: 3px 6px;
+            text-transform: uppercase;
+        }
+
+        .card-title {
+            font-size: 16.5px;
+            font-weight: 800;
+            color: #FFFFFF;
+            margin-bottom: 4px;
+            line-height: 1.25;
+            letter-spacing: -0.3px;
+        }
+
+        .card-location {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .card-location svg {
+            flex-shrink: 0;
+            color: var(--red);
+        }
+
+        .card-spec {
+            background: #0B1220;
+            border-left: 3px solid var(--yellow);
+            border-top: 1px solid var(--border);
+            border-right: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 10px;
+            margin-bottom: 10px;
+        }
+
+        .card-spec-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            font-weight: 800;
+            color: var(--yellow);
+            margin-bottom: 2px;
+        }
+
+        .card-spec-value {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: #E2E8F0;
+        }
+
+        .card-desc {
+            font-size: 12px;
+            color: #94A3B8;
+            margin-bottom: 14px;
+            line-height: 1.45;
+            flex-grow: 1;
+        }
+
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-bottom: 14px;
+        }
+
+        .tag-pill {
+            font-size: 10px;
+            font-weight: 800;
+            padding: 2px 6px;
+            border: 1px solid #000000;
+            background: #1E293B;
+            color: #CBD5E1;
+            text-transform: uppercase;
+        }
+
+        .tag-pill.tag-safety {
+            background: rgba(250, 204, 21, 0.15);
+            color: var(--yellow);
+            border-color: rgba(250, 204, 21, 0.4);
+        }
+
+        .tag-pill.tag-tactical {
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--cyan);
+            border-color: rgba(56, 189, 248, 0.4);
+        }
+
+        .tag-pill.tag-pabrik {
+            background: rgba(248, 113, 113, 0.15);
+            color: var(--red);
+            border-color: rgba(248, 113, 113, 0.4);
+        }
+
+        /* ACTION BUTTONS (MOBILE FRIENDLY) */
+        .card-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            padding-top: 10px;
+            border-top: 1.5px dashed var(--border);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 10px 12px;
+            font-size: 12px;
+            font-weight: 800;
+            text-decoration: none;
+            text-transform: uppercase;
+            border: 2px solid #000000;
+            box-shadow: var(--shadow-hard-sm);
+            cursor: pointer;
+            transition: all 0.15s ease;
+            min-height: 40px;
+        }
+
+        .btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 0px 0px 0px #000000;
+        }
+
+        .btn-primary {
+            background: var(--yellow);
+            color: #000000;
+        }
+
+        .btn-primary:hover {
+            background: #FDE047;
+        }
+
+        .btn-secondary {
+            background: var(--surface-elevated);
+            color: #FFFFFF;
+        }
+
+        .btn-secondary:hover {
+            background: #374151;
+        }
+
+        .btn-maps {
+            background: #0F172A;
+            color: var(--cyan);
+            border-color: #000000;
+        }
+
+        .btn-wa {
+            background: #166534;
+            color: #DCFCE7;
+            border-color: #000000;
+        }
+
+        .btn-wa:hover {
+            background: #15803D;
+        }
+
+        /* MODAL / BOTTOM SHEET (MOBILE DETAIL) */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.78);
+            backdrop-filter: blur(4px);
+            z-index: 200;
+            display: none;
+            align-items: flex-end;
+            justify-content: center;
+            animation: fadeIn 0.2s ease-out;
+        }
+
+        @media (min-width: 640px) {
+            .modal-overlay {
+                align-items: center;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-sheet {
+            background: var(--surface);
+            border: 3px solid #000000;
+            box-shadow: var(--shadow-hard-lg);
+            width: 100%;
+            max-width: 560px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 24px;
+            animation: slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            border-bottom: 2px solid #000000;
+            padding-bottom: 12px;
+        }
+
+        .modal-close-btn {
+            background: var(--red);
+            color: #FFFFFF;
+            border: 2px solid #000000;
+            box-shadow: var(--shadow-hard-sm);
+            width: 32px;
+            height: 32px;
+            font-weight: 900;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-body {
+            font-size: 13.5px;
+            line-height: 1.5;
+        }
+
+        /* EMPTY STATE */
+        .empty-state {
+            display: none;
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 30px 20px;
+            text-align: center;
+            background: var(--surface);
+            border: 2.5px solid #000000;
+            box-shadow: var(--shadow-hard);
+        }
+
+        .empty-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .empty-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: #FFFFFF;
+            margin-bottom: 6px;
+        }
+
+        .empty-sub {
+            color: var(--text-muted);
+            font-size: 13px;
+            margin-bottom: 16px;
+        }
+
+        /* BOTTOM FLOATING BAR (MOBILE QUICK INFO) */
+        .bottom-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(17, 24, 39, 0.95);
+            backdrop-filter: blur(10px);
+            border-top: 2px solid #000000;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 90;
+        }
+
+        .bottom-bar-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .scroll-top-btn {
+            background: var(--yellow);
+            color: #000000;
+            border: 2px solid #000000;
+            box-shadow: var(--shadow-hard-sm);
+            padding: 6px 12px;
+            font-size: 11px;
+            font-weight: 900;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* TOAST NOTIFICATION */
+        .toast {
+            position: fixed;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: #000000;
+            color: var(--yellow);
+            border: 2px solid var(--yellow);
+            padding: 8px 16px;
+            font-size: 12px;
+            font-weight: 800;
+            box-shadow: var(--shadow-hard);
+            z-index: 300;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.25s ease;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP STICKY HEADER -->
+    <header class="header">
+        <div class="header-top">
+            <div class="brand">
+                <span class="brand-badge mono">100 // VESTS</span>
+                <h1 class="brand-title">ROMPI<span>DIRECT</span></h1>
+            </div>
+            <div class="counter-badge mono">
+                <span class="pulse-dot"></span>
+                <span id="activeCount">100</span> / 100 VENDOR
+            </div>
+        </div>
+
+        <div class="controls-wrapper">
+            <!-- SEARCH BAR -->
+            <div class="search-container">
+                <input type="text" id="searchInput" class="search-input" placeholder="Cari vendor, wilayah (contoh: KIIC, MM2100, K3, Taslan)..." autocomplete="off">
+                <button id="clearSearch" class="clear-btn" title="Hapus pencarian">✕</button>
+                <div class="search-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </div>
+            </div>
+
+            <!-- REGION CHIPS -->
+            <div class="chip-scroll" id="regionFilters" style="margin-bottom: 6px;">
+                <button class="chip active" data-region="ALL">SEMUA WILAYAH (100)</button>
+                <button class="chip" data-region="Karawang">KARAWANG (35)</button>
+                <button class="chip" data-region="Cikarang">CIKARANG (30)</button>
+                <button class="chip" data-region="Tambun-Cibitung">TAMBUN & CIBITUNG (15)</button>
+                <button class="chip" data-region="Kota Bekasi">KOTA BEKASI (20)</button>
+            </div>
+
+            <!-- TAG CHIPS -->
+            <div class="chip-scroll" id="tagFilters">
+                <button class="chip chip-tag active" data-tag="ALL">SEMUA KATEGORI</button>
+                <button class="chip chip-tag" data-tag="Safety K3">⚡ SAFETY K3</button>
+                <button class="chip chip-tag" data-tag="Tactical">🛠 TACTICAL / SAKU</button>
+                <button class="chip chip-tag" data-tag="Pabrik">🏭 WEARPACK PABRIK</button>
+                <button class="chip chip-tag" data-tag="Komunitas">🏍 TASLAN / BIKERS</button>
+                <button class="chip chip-tag" data-tag="Kantor/PDH">👔 KANTOR & DINAS</button>
+                <button class="chip chip-tag" data-tag="Jaring">🦺 JARING MESH</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- STATS STRIP -->
+    <div class="stats-strip">
+        <div class="stats-text mono">
+            MENAMPILKAN: <strong id="resultStats">100 VENDOR DITEMUKAN</strong>
+        </div>
+        <button id="resetFilters" class="reset-filter-btn">RESET FILTER ✕</button>
+    </div>
+
+    <!-- MAIN VENDOR GRID -->
+    <main class="vendor-grid" id="vendorGrid">
+        <!-- Rendered dynamically by JavaScript -->
+    </main>
+
+    <!-- EMPTY STATE -->
+    <div class="empty-state" id="emptyState">
+        <div class="empty-icon">🔍</div>
+        <div class="empty-title">TIDAK ADA VENDOR COCOK</div>
+        <div class="empty-sub">Coba ubah kata kunci pencarian atau bersihkan filter wilayah/kategori yang aktif.</div>
+        <button class="btn btn-primary" onclick="resetAllFilters()">RESET SEMUA PENCARIAN</button>
+    </div>
+
+    <!-- BOTTOM FLOATING ACTION BAR -->
+    <div class="bottom-bar">
+        <div class="bottom-bar-left mono">
+            <span style="color:var(--yellow); font-weight:900;">DIRECT DIRECTORY</span>
+            <span style="color:var(--text-muted);">// 2026</span>
+        </div>
+        <button class="scroll-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+            ▲ KE ATAS
+        </button>
+    </div>
+
+    <!-- VENDOR DETAIL MODAL / SHEET -->
+    <div class="modal-overlay" id="detailModal">
+        <div class="modal-sheet">
+            <div class="modal-header">
+                <div class="mono" id="modalId" style="color: var(--yellow); font-weight:900; font-size:13px;">[#01] KARAWANG</div>
+                <button class="modal-close-btn" onclick="closeModal()">✕</button>
+            </div>
+            <div class="modal-body">
+                <h2 id="modalTitle" style="color:#FFF; font-size:20px; font-weight:900; margin-bottom:4px;">Nama Vendor</h2>
+                <div id="modalLoc" style="color:var(--cyan); font-size:13px; font-weight:700; margin-bottom:14px;">Wilayah</div>
+                
+                <div style="background:#0D1525; border-left:3px solid var(--yellow); padding:10px; margin-bottom:12px;">
+                    <div style="font-size:11px; color:var(--yellow); font-weight:800; text-transform:uppercase;">SPESIALISASI ROMPI:</div>
+                    <div id="modalSpec" style="font-size:14px; font-weight:700; color:#FFF;">Spesialisasi detail</div>
+                </div>
+
+                <div id="modalDesc" style="color:#CBD5E1; margin-bottom:16px; line-height:1.5;">Deskripsi lengkap</div>
+
+                <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:20px;" id="modalTags">
+                    <!-- Tags rendered here -->
+                </div>
+
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+                    <a id="modalWebBtn" href="#" target="_blank" class="btn btn-primary">🌐 BUKA WEB</a>
+                    <a id="modalMapsBtn" href="#" target="_blank" class="btn btn-maps">📍 BUKA MAPS</a>
+                </div>
+                <div style="margin-top:10px;">
+                    <a id="modalWaBtn" href="#" target="_blank" class="btn btn-wa" style="width:100%;">💬 HUBUNGI VIA WHATSAPP</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST -->
+    <div class="toast" id="toastMessage">Tautan Disalin!</div>
+
+    <!-- APPLICATION JAVASCRIPT -->
+    <script>
+        const VENDORS = [
+  {
+    "id": 1,
+    "name": "CV GTJ Seragam",
+    "location": "Purwasari, Karawang",
+    "region": "Karawang",
+    "specialty": "Rompi Safety K3, Wearpack Pabrik",
+    "description": "Pabrik konveksi terpadu dengan mesin bordir komputer modern, spesialis pengadaan seragam pabrik dan rompi safety korporat.",
+    "linkLabel": "gtjseragam.com",
+    "linkUrl": "https://gtjseragam.com",
+    "mapsUrl": "https://maps.google.com/?q=CV+GTJ+Seragam+Karawang",
+    "tags": [
+      "Safety K3",
+      "Pabrik"
+    ],
+    "wa": "62818616536"
+  },
+  {
+    "id": 2,
+    "name": "Karriz ID",
+    "location": "Telukjambe Timur, Karawang",
+    "region": "Karawang",
+    "specialty": "Rompi Taslan Windproof, Custom Komunitas",
+    "description": "Spesialis jaket dan rompi taslan mikro/balon dengan lapisan furing jaring/polar, cocok untuk apparel komunitas dan instansi.",
+    "linkLabel": "karriz.id",
+    "linkUrl": "https://karriz.id",
+    "mapsUrl": "https://maps.google.com/?q=Karriz+ID+Telukjambe+Karawang",
+    "tags": [
+      "Komunitas"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 3,
+    "name": "CV Mitra Mandiri Design",
+    "location": "Karawang Barat (Gedung Niki Four)",
+    "region": "Karawang",
+    "specialty": "Rompi Lapangan, Seragam Perusahaan",
+    "description": "Berpengalaman melayani tender seragam kerja industri di kawasan KIIC dan Surya Cipta dengan legalitas CV lengkap.",
+    "linkLabel": "konveksikarawang.co.id",
+    "linkUrl": "https://konveksikarawang.co.id",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Mitra+Mandiri+Design+Karawang",
+    "tags": [
+      "Tactical"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 4,
+    "name": "Elbiwan Konveksi",
+    "location": "Telukjambe Timur (Ronggo Waluyo)",
+    "region": "Karawang",
+    "specialty": "Rompi Lapangan Drill/Ripstop, Instansi",
+    "description": "Melayani pemesanan rompi lapangan untuk kampus (UNSIKA), ormas, instansi dinas, serta seragam dinas harian (PDH).",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Elbiwan+Konveksi+Telukjambe+Karawang",
+    "mapsUrl": "https://maps.google.com/?q=Elbiwan+Konveksi+Telukjambe+Karawang",
+    "tags": [
+      "Tactical"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 5,
+    "name": "Konveksi Seragam Karawang",
+    "location": "Jl. Galunggung No. 80a, Karawang",
+    "region": "Karawang",
+    "specialty": "Rompi Safety K3, Organisasi, Pabrik",
+    "description": "Konveksi seragam terpercaya dengan pengerjaan jahitan rantai rapi dan bordir logo presisi.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Seragam+Karawang+Galunggung",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Seragam+Karawang+Galunggung",
+    "tags": [
+      "Safety K3",
+      "Pabrik"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 6,
+    "name": "PT Konveksi Karya Hutama (JC)",
+    "location": "Kawasan Industri KIIC & Klari",
+    "region": "Karawang",
+    "specialty": "Rompi Safety Scotlight K3, Tambang",
+    "description": "Manufaktur berbadan hukum PT dengan spesialisasi APD, rompi safety scotchlite 3M, dan wearpack bersertifikasi.",
+    "linkLabel": "jckonveksi.com",
+    "linkUrl": "https://jckonveksi.com",
+    "mapsUrl": "https://maps.google.com/?q=JC+Konveksi+Karawang",
+    "tags": [
+      "Safety K3"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 7,
+    "name": "Dan Konveksi Karawang",
+    "location": "Mustika Prakarsa, Klari, Karawang",
+    "region": "Karawang",
+    "specialty": "Rompi Komunitas, Rompi Lapangan",
+    "description": "Jasa jahit semi-tailor yang fleksibel dalam kuantiti pemesanan, cocok untuk kebutuhan rompi UMKM dan komunitas lokal.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Dan+Konveksi+Mustika+Prakarsa+Karawang",
+    "mapsUrl": "https://maps.google.com/?q=Dan+Konveksi+Mustika+Prakarsa+Karawang",
+    "tags": [
+      "Tactical",
+      "Komunitas"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 8,
+    "name": "CV Maha Jaya Konveksi",
+    "location": "Jl. Arif Rahman Hakim No. 17, Karawang",
+    "region": "Karawang",
+    "specialty": "Rompi PDH/PDL Dinas, Seragam Kantor",
+    "description": "Pilihan tepat untuk seragam kantor resmi, rompi safari, dan rompi kepanitiaan dinas pemerintahan di Karawang.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=CV+Maha+Jaya+Konveksi+Karawang",
+    "mapsUrl": "https://maps.google.com/?q=CV+Maha+Jaya+Konveksi+Karawang",
+    "tags": [
+      "Kantor/PDH"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 9,
+    "name": "Braveryproject.id",
+    "location": "Jl. H. Abdul Halim No. 201, Karawang",
+    "region": "Karawang",
+    "specialty": "Rompi Bikers, Streetwear, Kanvas",
+    "description": "Konveksi berjiwa muda spesialis rompi casual, rompi kanvas motor, dan merchandise apparel kreatif.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Braveryproject+Konveksi+Karawang",
+    "mapsUrl": "https://maps.google.com/?q=Braveryproject+Konveksi+Karawang",
+    "tags": [
+      "Komunitas"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 10,
+    "name": "Kavenko Konveksi",
+    "location": "Jl. Puri Telukjambe No. 32, Karawang",
+    "region": "Karawang",
+    "specialty": "Rompi Garmen Pabrik, Produksi Massal",
+    "description": "Memiliki jalur perakitan garmen mandiri yang mampu memproduksi ribuan pieces rompi seragam dalam waktu cepat.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Kavenko+Konveksi+Puri+Telukjambe+Karawang",
+    "mapsUrl": "https://maps.google.com/?q=Kavenko+Konveksi+Puri+Telukjambe+Karawang",
+    "tags": [
+      "Pabrik"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 11,
+    "name": "Tomida.id Konveksi & Printing",
+    "location": "Permata Sari Indah, Karawang",
+    "region": "Karawang",
+    "specialty": "Rompi Safety Printing DTF, Event",
+    "description": "Kombinasi jahit pakaian dan digital printing untuk rompi panitia event dan rompi promosi perusahaan.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Tomida+Permata+Sari+Indah+Karawang",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Tomida+Permata+Sari+Indah+Karawang",
+    "tags": [
+      "Safety K3"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 12,
+    "name": "Konveksi PT Pramanti",
+    "location": "Telagasari, Karawang",
+    "region": "Karawang",
+    "specialty": "Rompi Wearpack Pabrik Manufaktur",
+    "description": "Melayani pabrik-pabrik di sepanjang koridor Karawang Timur - Kosambi - Telagasari.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+PT+Pramanti+Kandiwa+Telagasari+Karawang",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+PT+Pramanti+Kandiwa+Telagasari+Karawang",
+    "tags": [
+      "Pabrik"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 13,
+    "name": "Gresy Konveksi Karawang",
+    "location": "Gintungsalam, Karawang",
+    "region": "Karawang",
+    "specialty": "Rompi Kasual & Seragam Komunitas",
+    "description": "Konveksi pakaian seragam lokal ramah anggaran untuk pengadaan organisasi kemasyarakatan dan yayasan.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Gresy+Konveksi+Gintungsalam+Karawang",
+    "mapsUrl": "https://maps.google.com/?q=Gresy+Konveksi+Gintungsalam+Karawang",
+    "tags": [
+      "Komunitas"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 14,
+    "name": "AGK Konveksi & Sablon",
+    "location": "Kopo, Gg. Sutapati 1, Karawang",
+    "region": "Karawang",
+    "specialty": "Rompi Custom Sablon & Bordir",
+    "description": "Pusat konveksi di kawasan Kopo dengan opsi kustomisasi sablon dan bordir komputer rapi.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=AGK+Konveksi+Kopo+Karawang",
+    "mapsUrl": "https://maps.google.com/?q=AGK+Konveksi+Kopo+Karawang",
+    "tags": [
+      "Custom"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 15,
+    "name": "TRIPLE-K Konveksi Karawang",
+    "location": "Nagasari, Karawang Barat",
+    "region": "Karawang",
+    "specialty": "Rompi Promosi, Rompi Panitia Event",
+    "description": "Vendor kaos dan seragam rompi di Nagasari dengan reputasi pengerjaan cepat untuk deadline mendesak.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Triple+K+Konveksi+Karawang",
+    "mapsUrl": "https://maps.google.com/?q=Triple+K+Konveksi+Karawang",
+    "tags": [
+      "Custom"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 16,
+    "name": "Konveksi Putra Karawang",
+    "location": "Adiarsa Timur, Karawang Timur",
+    "region": "Karawang",
+    "specialty": "Rompi Kerja Semi-Tailor, Rompi Dinas",
+    "description": "Spesialis jahit rompi seragam kerja kantor pria dan wanita dengan fitting ukuran pas badan.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Putra+Adiarsa+Karawang",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Putra+Adiarsa+Karawang",
+    "tags": [
+      "Kantor/PDH"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 17,
+    "name": "Konveksi Seragam Lengo",
+    "location": "Kp. Lengo, Karawang Barat",
+    "region": "Karawang",
+    "specialty": "Rompi Kerja Pabrik & Organisasi",
+    "description": "Workshop penjahitan seragam operasional kerja dan rompi drill berkualitas dengan harga grosir.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Seragam+Lengo+Karawang",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Seragam+Lengo+Karawang",
+    "tags": [
+      "Pabrik"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 18,
+    "name": "Konveksi Cantik Karawang",
+    "location": "Karawang Kulon, Karawang",
+    "region": "Karawang",
+    "specialty": "Rompi Seragam Kantor Wanita & Pria",
+    "description": "Pilihan rompi seragam formal dengan detail jahitan halus dan material kain Japan Drill/Taipan Tropical.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Cantik+Karawang+Kulon",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Cantik+Karawang+Kulon",
+    "tags": [
+      "Kantor/PDH"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 19,
+    "name": "Rengasdengklok Uniform Center",
+    "location": "Rengasdengklok Selatan, Karawang",
+    "region": "Karawang",
+    "specialty": "Rompi Pengawas Lapangan, Ormas",
+    "description": "Pusat pemesanan seragam rompi untuk wilayah Karawang Utara, pertanian, dan organisasi kepemudaan.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Rengasdengklok+Karawang",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Rengasdengklok+Karawang",
+    "tags": [
+      "Tactical"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 20,
+    "name": "Cikampek Garment Tailor",
+    "location": "Dawuan Tengah, Cikampek, Karawang",
+    "region": "Karawang",
+    "specialty": "Rompi Operator Stasiun & Logistik",
+    "description": "Dekat dengan simpul transit kereta dan tol, melayani rompi staf logistik, ekspedisi, dan pergudangan.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Dawuan+Cikampek+Karawang",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Dawuan+Cikampek+Karawang",
+    "tags": [
+      "Custom"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 21,
+    "name": "Klari Safety Wear",
+    "location": "Duren, Klari, Karawang",
+    "region": "Karawang",
+    "specialty": "Rompi K3 High-Visibilitas Reflektor",
+    "description": "Fokus pada rompi keselamatan kerja jalan raya dan rompi pengawas proyek konstruksi di koridor Klari.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Klari+Duren+Karawang",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Klari+Duren+Karawang",
+    "tags": [
+      "Safety K3"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 22,
+    "name": "Mitra Surya Cipta Uniform",
+    "location": "Kutamekar, Ciampel, Karawang",
+    "region": "Karawang",
+    "specialty": "Rompi Pabrik Otomotif & Manufaktur",
+    "description": "Berada di pintu kawasan Surya Cipta, melayani pesanan rompi operator manufaktur presisi.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Ciampel+Kutamekar+Karawang",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Ciampel+Kutamekar+Karawang",
+    "tags": [
+      "Pabrik"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 23,
+    "name": "KIIC Industrial Apparel",
+    "location": "Sukaharja, Telukjambe Timur, Karawang",
+    "region": "Karawang",
+    "specialty": "Rompi K3 Standar Internasional",
+    "description": "Pemasok rompi keselamatan pabrik-pabrik multinasional di kawasan industri Karawang International.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Sukaharja+Telukjambe+Karawang",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Sukaharja+Telukjambe+Karawang",
+    "tags": [
+      "Safety K3"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 24,
+    "name": "Kosambi Karya Tailor",
+    "location": "Duren, Kosambi, Klari, Karawang",
+    "region": "Karawang",
+    "specialty": "Rompi Seragam Kerja Drill, Topi",
+    "description": "Menerima pesanan seragam komplit rompi, kemeja, dan topi untuk staf teknis perusahaan.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Kosambi+Klari+Karawang",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Kosambi+Klari+Karawang",
+    "tags": [
+      "Custom"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 25,
+    "name": "Kotabaru Konveksi Karawang",
+    "location": "Kotabaru, Cikampek, Karawang",
+    "region": "Karawang",
+    "specialty": "Rompi Komunitas Motor & Outdoor",
+    "description": "Spesialis rompi tebal berbahan despo/taslan furing polar untuk kenyamanan berkendara.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Kotabaru+Cikampek+Karawang",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Kotabaru+Cikampek+Karawang",
+    "tags": [
+      "Komunitas"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 26,
+    "name": "Jatisari Seragam Mandiri",
+    "location": "Balonggandu, Jatisari, Karawang",
+    "region": "Karawang",
+    "specialty": "Rompi Kerja Pertanian & Lapangan",
+    "description": "Melayani instansi pertanian, penyuluh lapangan, dan ormas di Karawang bagian timur.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Jatisari+Karawang",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Jatisari+Karawang",
+    "tags": [
+      "Tactical"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 27,
+    "name": "Cilamaya Apparel Specialist",
+    "location": "Cilamaya Wetan, Karawang",
+    "region": "Karawang",
+    "specialty": "Rompi Safety Pesisir & Migas",
+    "description": "Spesialis rompi kerja lapangan untuk pekerja pesisir, pelabuhan, dan fasilitas migas Jawa Barat Utara.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Cilamaya+Karawang",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Cilamaya+Karawang",
+    "tags": [
+      "Safety K3"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 28,
+    "name": "Rawamerta Konveksi",
+    "location": "Sukamerta, Rawamerta, Karawang",
+    "region": "Karawang",
+    "specialty": "Rompi Panitia Madrasah & Lembaga",
+    "description": "Menangani pesanan rompi seragam yayasan pendidikan, pondok pesantren, dan kepanitiaan.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Rawamerta+Karawang",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Rawamerta+Karawang",
+    "tags": [
+      "Custom"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 29,
+    "name": "Majalaya Karawang Garmindo",
+    "location": "Majalaya, Karawang",
+    "region": "Karawang",
+    "specialty": "Rompi Seragam Pabrik Tekstil",
+    "description": "Memproduksi pakaian keselamatan kerja pabrik dan rompi operator permesinan.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Majalaya+Karawang",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Majalaya+Karawang",
+    "tags": [
+      "Pabrik"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 30,
+    "name": "Telukjambe Barat Workwear",
+    "location": "Wanakerta, Telukjambe Barat",
+    "region": "Karawang",
+    "specialty": "Rompi Kontraktor Sipil & Bangunan",
+    "description": "Penyedia rompi proyek bagi mandor dan kontraktor pembangunan pabrik baru di Karawang Barat.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Wanakerta+Telukjambe+Karawang",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Wanakerta+Telukjambe+Karawang",
+    "tags": [
+      "Custom"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 31,
+    "name": "Pancawati Safety Konveksi",
+    "location": "Pancawati, Klari, Karawang",
+    "region": "Karawang",
+    "specialty": "Rompi Jaring Proyek Scotlight",
+    "description": "Rompi jaring jala ekonomis dengan scotlight reflektor tebal untuk keselamatan proyek jalan.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Pancawati+Klari+Karawang",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Pancawati+Klari+Karawang",
+    "tags": [
+      "Safety K3",
+      "Jaring"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 32,
+    "name": "Kondangjaya Tailor & Uniform",
+    "location": "Kondangjaya, Karawang Timur",
+    "region": "Karawang",
+    "specialty": "Rompi Seragam Sekolah & Instansi",
+    "description": "Spesialis rompi ekstrakurikuler (PMR, Pramuka) dan rompi seragam staf sekolah/kantor.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Kondangjaya+Karawang+Timur",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Kondangjaya+Karawang+Timur",
+    "tags": [
+      "Custom"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 33,
+    "name": "Tanjungpura Garment Corner",
+    "location": "Tanjungpura, Karawang Barat",
+    "region": "Karawang",
+    "specialty": "Rompi Tactical Ripstop Multi-Pocket",
+    "description": "Lokasi strategis di pintu masuk Karawang dari arah Bekasi, spesialis rompi taktikal saku banyak.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Tanjungpura+Karawang",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Tanjungpura+Karawang",
+    "tags": [
+      "Tactical"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 34,
+    "name": "Palumbonsari Uniform Studio",
+    "location": "Palumbonsari, Karawang Timur",
+    "region": "Karawang",
+    "specialty": "Rompi Komunitas & Event Gathering",
+    "description": "Mengerjakan rompi event custom dengan variasi warna kontras dan aplikasi bordir badge.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Palumbonsari+Karawang",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Palumbonsari+Karawang",
+    "tags": [
+      "Komunitas"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 35,
+    "name": "Ciampel Safety Apparel",
+    "location": "Parungmulya, Ciampel, Karawang",
+    "region": "Karawang",
+    "specialty": "Rompi APD Standar Pabrik Kimia",
+    "description": "Menyediakan rompi khusus industri kimia dengan bahan tahan percikan dan scotchlite certified.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Ciampel+Parungmulya+Karawang",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Ciampel+Parungmulya+Karawang",
+    "tags": [
+      "Safety K3",
+      "Pabrik"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 36,
+    "name": "PT Sastradinata Setia Sejahtera",
+    "location": "Kawasan Jababeka & MM2100",
+    "region": "Cikarang",
+    "specialty": "Rompi Safety K3 Standar Korporasi",
+    "description": "Garmen spesialis seragam industri korporat kelas atas, melayani ratusan tenant pabrik di Jababeka, MM2100, dan EJIP.",
+    "linkLabel": "sastradinata.com",
+    "linkUrl": "https://sastradinata.com",
+    "mapsUrl": "https://maps.google.com/?q=PT+Sastradinata+Setia+Sejahtera+Cikarang",
+    "tags": [
+      "Safety K3"
+    ],
+    "wa": "6287785920534"
+  },
+  {
+    "id": 37,
+    "name": "Pelangi Mitra Konveksi",
+    "location": "Cikarang Pusat (Jayamukti)",
+    "region": "Cikarang",
+    "specialty": "Rompi Proyek, Rompi Seragam Pabrik",
+    "description": "Berada di samping kawasan Delta Silicon, menawarkan pengerjaan cepat dan pilihan kain drill terlengkap.",
+    "linkLabel": "konveksiseragamcikarang.id",
+    "linkUrl": "https://konveksiseragamcikarang.id",
+    "mapsUrl": "https://maps.google.com/?q=Pelangi+Mitra+Konveksi+Cikarang",
+    "tags": [
+      "Pabrik"
+    ],
+    "wa": "6285719128880"
+  },
+  {
+    "id": 38,
+    "name": "Ananda Konveksi Cikarang",
+    "location": "Cikarang Selatan (Sukadami)",
+    "region": "Cikarang",
+    "specialty": "Rompi Teknisi Lapangan, Komunitas",
+    "description": "Vendor konveksi bersahabat untuk pesanan rompi serikat pekerja, rompi teknisi maintenance, dan komunitas.",
+    "linkLabel": "anandakonveksi.com",
+    "linkUrl": "https://anandakonveksicikarang.wordpress.com",
+    "mapsUrl": "https://maps.google.com/?q=Ananda+Konveksi+Cikarang+Selatan",
+    "tags": [
+      "Tactical",
+      "Komunitas"
+    ],
+    "wa": "6285719128880"
+  },
+  {
+    "id": 39,
+    "name": "Seragam Nusantara Cikarang",
+    "location": "Cikarang Selatan",
+    "region": "Cikarang",
+    "specialty": "Rompi Tactical Ripstop Multi-Pocket",
+    "description": "Fokus pada rompi berdesain taktis dengan banyak kompartemen saku untuk instrumen dan alat ukur teknisi.",
+    "linkLabel": "seragamnusantara.co.id",
+    "linkUrl": "https://seragamnusantara.co.id",
+    "mapsUrl": "https://maps.google.com/?q=Seragam+Nusantara+Cikarang",
+    "tags": [
+      "Tactical"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 40,
+    "name": "Oscas Konveksi Cikarang",
+    "location": "Cikarang Barat / Jababeka",
+    "region": "Cikarang",
+    "specialty": "Rompi Gudang/Logistik, Operator Pabrik",
+    "description": "Spesialis seragam operasional gudang dan pabrik dengan bahan sejuk berpori untuk iklim kerja tropis.",
+    "linkLabel": "oscas.co.id",
+    "linkUrl": "https://oscas.co.id",
+    "mapsUrl": "https://maps.google.com/?q=Oscas+Konveksi+Cikarang",
+    "tags": [
+      "Pabrik"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 41,
+    "name": "CV HAI Rejeki Nusantara (HAI)",
+    "location": "Karangbahagia, Kab. Bekasi",
+    "region": "Cikarang",
+    "specialty": "Rompi Cleanroom ESD, Industri",
+    "description": "Produsen berteknologi khusus seragam ruang bersih antistatis (ESD) serta rompi industri mikroelektronika.",
+    "linkLabel": "almahira.co.id",
+    "linkUrl": "https://almahira.co.id",
+    "mapsUrl": "https://maps.google.com/?q=Puri+Nirwana+Residences+Karangbahagia+Bekasi",
+    "tags": [
+      "Pabrik"
+    ],
+    "wa": "6285880908986"
+  },
+  {
+    "id": 42,
+    "name": "Pramika Uniform (PT Pramesti)",
+    "location": "Koridor Cikarang - Karawang",
+    "region": "Cikarang",
+    "specialty": "Rompi Safety Massal, Kontrak Pabrik",
+    "description": "Menyediakan layanan survey sampling fisik ke kantor pemesan dan pengetesan QC ketat pada setiap batch produksi.",
+    "linkLabel": "pramikauniform.com",
+    "linkUrl": "https://pramikauniform.com",
+    "mapsUrl": "https://maps.google.com/?q=Pramika+Uniform+Cikarang",
+    "tags": [
+      "Safety K3",
+      "Pabrik"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 43,
+    "name": "Mokoworkwear Cikarang",
+    "location": "Kawasan MM2100 & EJIP",
+    "region": "Cikarang",
+    "specialty": "Rompi Safety K3 Scotlight 3M, Waterproof",
+    "description": "Brand ternama baju kerja keselamatan dengan standar scotchlite 3M untuk ketahanan cuci puluhan siklus.",
+    "linkLabel": "mokoworkwear.com",
+    "linkUrl": "https://mokoworkwear.com",
+    "mapsUrl": "https://maps.google.com/?q=Mokoworkwear+Cikarang",
+    "tags": [
+      "Safety K3"
+    ],
+    "wa": "6282165084064"
+  },
+  {
+    "id": 44,
+    "name": "Konveksi Seragam Cikarang (KSC)",
+    "location": "Pilar, Cikarang Utara",
+    "region": "Cikarang",
+    "specialty": "Rompi Jaring (Mesh) Safety, Proyek",
+    "description": "Spesialis rompi jaring reflektif warna hijau/oranye stabilo untuk visibilitas tinggi pekerja lapangan.",
+    "linkLabel": "konveksicikarang.id",
+    "linkUrl": "https://konveksiseragamcikarang.id",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Seragam+Cikarang",
+    "tags": [
+      "Safety K3",
+      "Jaring"
+    ],
+    "wa": "6285719128880"
+  },
+  {
+    "id": 45,
+    "name": "CV Sentosa Apparel",
+    "location": "Lippo Cikarang / Jababeka",
+    "region": "Cikarang",
+    "specialty": "Rompi Promosi Pabrik, Polo & Sablon",
+    "description": "Melayani seragam promosi, rompi serikat buruh, dan merchandise korporat skala besar.",
+    "linkLabel": "sabloncikarang.com",
+    "linkUrl": "https://sabloncikarang.com",
+    "mapsUrl": "https://maps.google.com/?q=Sentosa+Apparel+Cikarang",
+    "tags": [
+      "Pabrik"
+    ],
+    "wa": "6285719128880"
+  },
+  {
+    "id": 46,
+    "name": "Konveksi Bintang Cikarang",
+    "location": "Jababeka 2, Cikarang Utara",
+    "region": "Cikarang",
+    "specialty": "Rompi Scotlight Pabrik Otomotif",
+    "description": "Mitra konveksi bagi kontraktor dan vendor tier-1/tier-2 perakitan otomotif di Jababeka.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Bintang+Jababeka+Cikarang",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Bintang+Jababeka+Cikarang",
+    "tags": [
+      "Safety K3",
+      "Pabrik"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 47,
+    "name": "Delta Silicon Safety Specialist",
+    "location": "Delta Silicon 3, Lippo Cikarang",
+    "region": "Cikarang",
+    "specialty": "Rompi K3 High-Vis 3M, Kontraktor",
+    "description": "Menyediakan APD dan rompi safety tahan api serta rompi pengawas proyek bersertifikat.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Delta+Silicon+Lippo+Cikarang+Bekasi",
+    "mapsUrl": "https://maps.google.com/?q=Delta+Silicon+Lippo+Cikarang+Bekasi",
+    "tags": [
+      "Safety K3"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 48,
+    "name": "Warrior Konveksi Cikarang",
+    "location": "Jababeka 1, Harjamekar, Cikarang",
+    "region": "Cikarang",
+    "specialty": "Rompi Proyek, Wearpack Staf",
+    "description": "Terdaftar di direktori industri garmen, spesialis pakaian seragam kerja lapangan dan rompi pabrik.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Warrior+Konveksi+Cikarang",
+    "mapsUrl": "https://maps.google.com/?q=Warrior+Konveksi+Cikarang",
+    "tags": [
+      "Pabrik"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 49,
+    "name": "Jababeka Apparel Studio",
+    "location": "Pasirgombong, Cikarang Utara",
+    "region": "Cikarang",
+    "specialty": "Rompi Kerja Drill Bordir Komputer",
+    "description": "Memiliki fasilitas bordir komputer berkecepatan tinggi untuk logo perusahaan yang rumit.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Pasirgombong+Cikarang",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Pasirgombong+Cikarang",
+    "tags": [
+      "Custom"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 50,
+    "name": "Cikarang Pusat Tailor & Garmen",
+    "location": "Pasirranji, Cikarang Pusat",
+    "region": "Cikarang",
+    "specialty": "Rompi Dinas Pemda & Instansi",
+    "description": "Dekat dengan kompleks perkantoran Pemkab Bekasi di Deltamas, melayani rompi kedinasan dan kepanitiaan.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Pasirranji+Cikarang+Pusat",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Pasirranji+Cikarang+Pusat",
+    "tags": [
+      "Kantor/PDH"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 51,
+    "name": "Lippo Cikarang Uniform Line",
+    "location": "Ciantra, Cikarang Selatan",
+    "region": "Cikarang",
+    "specialty": "Rompi Formal Kantor & Supervisor",
+    "description": "Rompi berpotongan rapi ala eksekutif untuk staf manajerial dan supervisor pabrik.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Ciantra+Cikarang+Selatan",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Ciantra+Cikarang+Selatan",
+    "tags": [
+      "Kantor/PDH"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 52,
+    "name": "EJIP Industrial Wear",
+    "location": "Sukaresmi, Cikarang Selatan",
+    "region": "Cikarang",
+    "specialty": "Rompi Pabrik Elektronik & Komponen",
+    "description": "Berada di samping kawasan EJIP, melayani kebutuhan seragam rompi harian pabrik presisi Jepang.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Sukaresmi+Cikarang",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Sukaresmi+Cikarang",
+    "tags": [
+      "Pabrik"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 53,
+    "name": "Cikarang Timur Apparel",
+    "location": "Jatireja, Cikarang Timur",
+    "region": "Cikarang",
+    "specialty": "Rompi Lapangan Proyek Konstruksi",
+    "description": "Melayani pengadaan seragam rompi untuk proyek pergudangan dan stadion Wibawa Mukti.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Jatireja+Cikarang+Timur",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Jatireja+Cikarang+Timur",
+    "tags": [
+      "Tactical"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 54,
+    "name": "Pasir Gombong Workwear",
+    "location": "Pasirgombong, Cikarang Utara",
+    "region": "Cikarang",
+    "specialty": "Rompi Safety Kombinasi 2 Warna",
+    "description": "Model rompi kombinasi warna biru-oranye atau hitam-merah dengan scotchlite horizontal & vertikal.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Pasir+Gombong+Cikarang",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Pasir+Gombong+Cikarang",
+    "tags": [
+      "Safety K3"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 55,
+    "name": "Serang Baru Safety Center",
+    "location": "Sukasirna, Serang Baru, Cikarang",
+    "region": "Cikarang",
+    "specialty": "Rompi Kontraktor & Lapangan",
+    "description": "Penyedia seragam kerja lapangan bagi kontraktor sub-station dan infrastruktur wilayah selatan.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Serang+Baru+Bekasi",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Serang+Baru+Bekasi",
+    "tags": [
+      "Tactical"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 56,
+    "name": "Hegarmanah Tailor Industri",
+    "location": "Hegarmanah, Cikarang Timur",
+    "region": "Cikarang",
+    "specialty": "Rompi Drill Kerja Operator",
+    "description": "Menyediakan bahan American Drill original dan jahitan bartack di setiap sudut saku rompi.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Hegarmanah+Cikarang",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Hegarmanah+Cikarang",
+    "tags": [
+      "Custom"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 57,
+    "name": "Simpangan Cikarang Uniform",
+    "location": "Simpangan, Cikarang Utara",
+    "region": "Cikarang",
+    "specialty": "Rompi Panitia Acara & Ormas",
+    "description": "Fleksibel untuk pesanan partai kecil (mulai 12 pcs) dengan pengerjaan sablon dan bordir.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Simpangan+Cikarang",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Simpangan+Cikarang",
+    "tags": [
+      "Custom"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 58,
+    "name": "Cikarang Barat Industrial Apparel",
+    "location": "Telaga Asih, Cikarang Barat",
+    "region": "Cikarang",
+    "specialty": "Rompi Staf Maintenance Pabrik",
+    "description": "Rompi tahan kotor oli dengan bahan ripstop gelap dan pita reflektif neon.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Telaga+Asih+Cikarang",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Telaga+Asih+Cikarang",
+    "tags": [
+      "Pabrik"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 59,
+    "name": "Cicau Garmen Cikarang",
+    "location": "Cicau, Cikarang Pusat",
+    "region": "Cikarang",
+    "specialty": "Rompi Lapangan Pengawas Properti",
+    "description": "Melayani seragam staf sekuriti perumahan, pengawas proyek hunian Kota Deltamas.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Cicau+Cikarang+Pusat",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Cicau+Cikarang+Pusat",
+    "tags": [
+      "Tactical"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 60,
+    "name": "Sertajaya Garment Studio",
+    "location": "Sertajaya, Cikarang Timur",
+    "region": "Cikarang",
+    "specialty": "Rompi Pelatihan Vokasi & Magang",
+    "description": "Menyediakan seragam rompi praktikum untuk SMK, balai latihan kerja (BLK), dan politeknik.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Sertajaya+Cikarang",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Sertajaya+Cikarang",
+    "tags": [
+      "Custom"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 61,
+    "name": "Karangasih Konveksi Cikarang",
+    "location": "Karangasih, Cikarang Utara",
+    "region": "Cikarang",
+    "specialty": "Rompi Safety K3 Jaring Stabilo",
+    "description": "Spesialis rompi jaring scotlight V-pattern untuk visibilitas malam hari.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Karangasih+Cikarang",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Karangasih+Cikarang",
+    "tags": [
+      "Safety K3",
+      "Jaring"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 62,
+    "name": "Gandasari Safety Gear",
+    "location": "Gandasari, Cikarang Barat",
+    "region": "Cikarang",
+    "specialty": "Rompi Pengemudi Forklift & Logistik",
+    "description": "Bahan ringan tidak gerah untuk operator warehouse yang bergerak aktif di dalam ruangan.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Gandasari+Cikarang",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Gandasari+Cikarang",
+    "tags": [
+      "Custom"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 63,
+    "name": "Cikarang Techno Wear",
+    "location": "Jababeka Techno Park, Cikarang",
+    "region": "Cikarang",
+    "specialty": "Rompi Staf Laboratorium & R&D",
+    "description": "Rompi semi-formal dengan kain drill tebal berserat halus untuk staf inspeksi teknis.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Jababeka+Techno+Park",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Jababeka+Techno+Park",
+    "tags": [
+      "Custom"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 64,
+    "name": "Sukatani Apparel Cikarang",
+    "location": "Sukamulya, Sukatani, Kab. Bekasi",
+    "region": "Cikarang",
+    "specialty": "Rompi Organisasi & Relawan Sosial",
+    "description": "Menjangkau wilayah Bekasi utara untuk pengadaan seragam rompi karang taruna dan lembaga zakat.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Sukatani+Bekasi",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Sukatani+Bekasi",
+    "tags": [
+      "Custom"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 65,
+    "name": "Danau Indah MM2100 Wear",
+    "location": "Danau Indah, Cikarang Barat",
+    "region": "Cikarang",
+    "specialty": "Rompi Safety Pabrik Logistik Terpadu",
+    "description": "Berada di dalam kawasan MM2100, melayani tenant gudang logistik internasional.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Danau+Indah+MM2100",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Danau+Indah+MM2100",
+    "tags": [
+      "Safety K3",
+      "Pabrik"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 66,
+    "name": "Konveksi Fasha",
+    "location": "Jatimulya, Tambun Selatan",
+    "region": "Tambun-Cibitung",
+    "specialty": "Rompi Wearpack, Rompi Komunitas Drill",
+    "description": "Workshop konveksi terpadu di Tambun Selatan yang memproduksi rompi seragam, kemeja, celana, dan wearpack.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Fasha+Jatimulya+Tambun+Bekasi",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Fasha+Jatimulya+Tambun+Bekasi",
+    "tags": [
+      "Pabrik",
+      "Komunitas"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 67,
+    "name": "Amorfati Veksindo",
+    "location": "Puri Persada, Sindangmulya, Cibitung",
+    "region": "Tambun-Cibitung",
+    "specialty": "Rompi Safety K3, Jersey, Garmen",
+    "description": "Menawarkan paket komplit garmen, rompi safety, kaos sablon, dan seragam industri di koridor Cibitung.",
+    "linkLabel": "konveksicikarang.com",
+    "linkUrl": "https://konveksicikarang.com",
+    "mapsUrl": "https://maps.google.com/?q=Amorfati+Veksindo+Cibitung+Bekasi",
+    "tags": [
+      "Safety K3",
+      "Pabrik"
+    ],
+    "wa": "6285719128880"
+  },
+  {
+    "id": 68,
+    "name": "Konveksi Cibitung Makmur",
+    "location": "Jl. Raya Teuku Umar, Cibitung",
+    "region": "Tambun-Cibitung",
+    "specialty": "Rompi Gudang, Rompi Kurir Logistik",
+    "description": "Spesialis pakaian kerja logistik di sepanjang jalur arteri Teuku Umar dengan harga grosir kompetitif.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Teuku+Umar+Cibitung+Bekasi",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Teuku+Umar+Cibitung+Bekasi",
+    "tags": [
+      "Custom"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 69,
+    "name": "Tambun Garment & Uniform",
+    "location": "Sultan Hasanudin, Tambun Selatan",
+    "region": "Tambun-Cibitung",
+    "specialty": "Rompi Karyawan Pabrik & Dinas",
+    "description": "Penyedia jasa konveksi garmen seragam kerja pabrik dan dinas dengan lokasi strategis di jalan utama.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Tambun+Garment+Sultan+Hasanudin+Bekasi",
+    "mapsUrl": "https://maps.google.com/?q=Tambun+Garment+Sultan+Hasanudin+Bekasi",
+    "tags": [
+      "Pabrik",
+      "Kantor/PDH"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 70,
+    "name": "Toko Abi Konveksi Tambun",
+    "location": "Mekarsari, Tambun Selatan",
+    "region": "Tambun-Cibitung",
+    "specialty": "Rompi Safety Pabrik & Kemeja PDH",
+    "description": "Vendor konveksi populer yang melayani pemesanan rompi perusahaan dan seragam kawasan industri.",
+    "linkLabel": "konveksi-tokoabi.co.id",
+    "linkUrl": "https://konveksi-tokoabi.co.id",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Toko+Abi+Bekasi",
+    "tags": [
+      "Safety K3",
+      "Pabrik",
+      "Kantor/PDH"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 71,
+    "name": "Cibitung Safety Center",
+    "location": "Wanasari, Cibitung, Kab. Bekasi",
+    "region": "Tambun-Cibitung",
+    "specialty": "Rompi Safety K3 Scotlight Reflektif",
+    "description": "Rompi safety bahan American Drill dengan scotlight reflektif 3M untuk pekerja lapangan.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Wanasari+Cibitung+Bekasi",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Wanasari+Cibitung+Bekasi",
+    "tags": [
+      "Safety K3"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 72,
+    "name": "Sumberjaya Tailor Tambun",
+    "location": "Sumberjaya, Tambun Selatan",
+    "region": "Tambun-Cibitung",
+    "specialty": "Rompi Tactical Outdoor Multi-Pocket",
+    "description": "Pilihan tepat untuk rompi berdesain tactical dengan saku banyak berbahan ripstop anti-sobek.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Sumberjaya+Tambun+Selatan",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Sumberjaya+Tambun+Selatan",
+    "tags": [
+      "Tactical",
+      "Komunitas"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 73,
+    "name": "Setiadarma Uniform Corner",
+    "location": "Setiadarma, Tambun Selatan",
+    "region": "Tambun-Cibitung",
+    "specialty": "Rompi Panitia Event & Komunitas",
+    "description": "Melayani pembuatan rompi kegiatan, reuni akbar, dan seragam panitia bazar.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Setiadarma+Tambun+Bekasi",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Setiadarma+Tambun+Bekasi",
+    "tags": [
+      "Komunitas"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 74,
+    "name": "Sukadanau Industrial Apparel",
+    "location": "Sukadanau, Cibitung (Kawasan Gobel)",
+    "region": "Tambun-Cibitung",
+    "specialty": "Rompi Pabrik Elektronik & Gudang",
+    "description": "Melayani kebutuhan seragam pabrik di sekitar kawasan industri Gobel dan sekitarnya.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Sukadanau+Cibitung+Bekasi",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Sukadanau+Cibitung+Bekasi",
+    "tags": [
+      "Pabrik"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 75,
+    "name": "Tridaya Sakti Apparel",
+    "location": "Tridaya Sakti, Tambun Selatan",
+    "region": "Tambun-Cibitung",
+    "specialty": "Rompi Seragam Karyawan Bahan Drill",
+    "description": "Jahitan rapi, pola pas badan, dan pilihan bahan Japan Drill yang awet dicuci berkali-kali.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Tridaya+Sakti+Tambun+Bekasi",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Tridaya+Sakti+Tambun+Bekasi",
+    "tags": [
+      "Custom"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 76,
+    "name": "Setu Bekasi Workwear",
+    "location": "Lubangbuaya, Setu, Kab. Bekasi",
+    "region": "Tambun-Cibitung",
+    "specialty": "Rompi Kontraktor Sipil & Surveyor",
+    "description": "Melayani para kontraktor dan surveyor pemetaan lahan di koridor Setu - Cileungsi.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Lubangbuaya+Setu+Bekasi",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Lubangbuaya+Setu+Bekasi",
+    "tags": [
+      "Custom"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 77,
+    "name": "Tambun Utara Seragam Mandiri",
+    "location": "Sriamur, Tambun Utara",
+    "region": "Tambun-Cibitung",
+    "specialty": "Rompi Seragam Sekolah & Ormas",
+    "description": "Pilihan terjangkau bagi yayasan pendidikan dan organisasi kemasyarakatan lokal.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Sriamur+Tambun+Utara",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Sriamur+Tambun+Utara",
+    "tags": [
+      "Custom"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 78,
+    "name": "Cibuntu Garment Workshop",
+    "location": "Cibuntu, Cibitung, Kab. Bekasi",
+    "region": "Tambun-Cibitung",
+    "specialty": "Rompi Keselamatan Karyawan Pergudangan",
+    "description": "Rompi scotlight jaring dan kain drill untuk staf pergudangan di kawasan transit logistik Cibuntu.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Cibuntu+Cibitung+Bekasi",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Cibuntu+Cibitung+Bekasi",
+    "tags": [
+      "Custom"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 79,
+    "name": "Burangkeng Safety Tailor",
+    "location": "Burangkeng, Setu, Kab. Bekasi",
+    "region": "Tambun-Cibitung",
+    "specialty": "Rompi Alat Berat & Konstruksi",
+    "description": "Spesialis rompi safety tebal untuk operator alat berat dan proyek perataan tanah.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Burangkeng+Setu+Bekasi",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Burangkeng+Setu+Bekasi",
+    "tags": [
+      "Custom"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 80,
+    "name": "Babelan Industrial Apparel",
+    "location": "Babelan Kota, Kab. Bekasi",
+    "region": "Tambun-Cibitung",
+    "specialty": "Rompi Lapangan Pembangkit Listrik & Migas",
+    "description": "Melayani pakaian rompi safety kontraktor PLTU Tarumajaya dan fasilitas industri Babelan.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Babelan+Kota+Bekasi",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Babelan+Kota+Bekasi",
+    "tags": [
+      "Tactical"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 81,
+    "name": "DKonveksi Bekasi",
+    "location": "Caman Raya, Jakasampurna, Bekasi Barat",
+    "region": "Kota Bekasi",
+    "specialty": "Rompi Varsity, Rompi PDL Lapangan",
+    "description": "Vendor terkemuka untuk rompi kampus, rompi varsity, seragam dinas PDH, dan kemeja lapangan.",
+    "linkLabel": "dkonveksi.com",
+    "linkUrl": "https://dkonveksi.com",
+    "mapsUrl": "https://maps.google.com/?q=DKonveksi+Bekasi",
+    "tags": [
+      "Tactical"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 82,
+    "name": "Nacha Konveksi",
+    "location": "Caman Utara / Rawalumbu, Bekasi Barat",
+    "region": "Kota Bekasi",
+    "specialty": "Rompi Safety, Rompi Event Organizer, PDH",
+    "description": "Spesialis seragam kerja kantor, rompi kepanitiaan EO, dan rompi safety proyek dengan pengerjaan tepat waktu.",
+    "linkLabel": "nachakonveksi.com",
+    "linkUrl": "https://nachakonveksi.com",
+    "mapsUrl": "https://maps.google.com/?q=Nacha+Konveksi+Bekasi",
+    "tags": [
+      "Safety K3",
+      "Kantor/PDH"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 83,
+    "name": "King Haz Production",
+    "location": "Padurenan, Mustika Jaya, Bekasi",
+    "region": "Kota Bekasi",
+    "specialty": "Rompi Multi-Pocket Relawan/Medis",
+    "description": "Vendor teruji membuat rompi multi-pocket berbahan drill tebal untuk PMI, tim SAR, dan kementerian.",
+    "linkLabel": "kingproduction.com",
+    "linkUrl": "https://konveksiseragam-kingproduction.com",
+    "mapsUrl": "https://maps.google.com/?q=King+Production+Bekasi",
+    "tags": [
+      "Tactical"
+    ],
+    "wa": "6282113954770"
+  },
+  {
+    "id": 84,
+    "name": "Asinatex (PT Asinar Behapeih)",
+    "location": "Kaliabang Tengah, Bekasi Utara",
+    "region": "Kota Bekasi",
+    "specialty": "Rompi Pabrik Massal, Baju Kerja",
+    "description": "Pabrik garmen berskala industri besar, sanggup memenuhi kontrak pengadaan seragam rompi pabrik tender.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=PT+Asinar+Behapeih+Jaya+Bekasi",
+    "mapsUrl": "https://maps.google.com/?q=PT+Asinar+Behapeih+Jaya+Bekasi",
+    "tags": [
+      "Pabrik"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 85,
+    "name": "Maximal Konveksi Bekasi",
+    "location": "Kranji, Bekasi Barat",
+    "region": "Kota Bekasi",
+    "specialty": "Rompi Taslan Windproof, Komunitas",
+    "description": "Spesialis bahan taslan mikro dan parasut despo anti-angin untuk komunitas motor dan instansi.",
+    "linkLabel": "maximalkonveksi.co.id",
+    "linkUrl": "https://maximalkonveksi.co.id",
+    "mapsUrl": "https://maps.google.com/?q=Maximal+Konveksi+Bekasi",
+    "tags": [
+      "Komunitas"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 86,
+    "name": "Ozza Konveksi Bekasi",
+    "location": "Bekasi Selatan & Jatiasih",
+    "region": "Kota Bekasi",
+    "specialty": "Rompi Jurnalis Outdoor, Rompi K3",
+    "description": "Pola ergonomis, jahitan rapi garmen, dan aplikasi bordir komputer dengan minimal order terjangkau.",
+    "linkLabel": "ozzakonveksi.com",
+    "linkUrl": "https://ozzakonveksi.com",
+    "mapsUrl": "https://maps.google.com/?q=Ozza+Konveksi+Bekasi",
+    "tags": [
+      "Safety K3",
+      "Komunitas"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 87,
+    "name": "SBS Garment (PT Sukses Bikin Sandang)",
+    "location": "Mustikasari, Mustikajaya, Bekasi",
+    "region": "Kota Bekasi",
+    "specialty": "Rompi Garmen Industri, Standar Ekspor",
+    "description": "Pabrik garmen berstandar ekspor, melayani CMT dan FOB rompi dan seragam kerja korporat skala besar.",
+    "linkLabel": "sbsgarment.id",
+    "linkUrl": "https://sbsgarment.id",
+    "mapsUrl": "https://maps.google.com/?q=PT+Sukses+Bikin+Sandang+Bekasi",
+    "tags": [
+      "Pabrik"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 88,
+    "name": "Gemilang Garment",
+    "location": "Bantar Gebang, Kota Bekasi",
+    "region": "Kota Bekasi",
+    "specialty": "Rompi Seragam Pabrik & Kontraktor",
+    "description": "Menawarkan paket harga ekonomis untuk rompi proyek konstruksi dan pakaian kerja karyawan pabrik.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Gemilang+Garment+Bantar+Gebang+Bekasi",
+    "mapsUrl": "https://maps.google.com/?q=Gemilang+Garment+Bantar+Gebang+Bekasi",
+    "tags": [
+      "Pabrik"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 89,
+    "name": "Konveksi Seragam Kerja Bekasi",
+    "location": "Jl. Kusuma Raya No. 150, Wisma Jaya, Bekasi Timur",
+    "region": "Kota Bekasi",
+    "specialty": "Rompi Seragam Kantor & Lapangan Drill",
+    "description": "Admin responsif via WhatsApp, melayani pesanan kemeja drill kantor dan rompi seragam dinas harian.",
+    "linkLabel": "seragamkerjabekasi.com",
+    "linkUrl": "https://seragamkerjabekasi.com",
+    "mapsUrl": "https://maps.google.com/?q=Seragam+Kerja+Bekasi+Wisma+Jaya",
+    "tags": [
+      "Tactical",
+      "Kantor/PDH"
+    ],
+    "wa": "6281933444433"
+  },
+  {
+    "id": 90,
+    "name": "Galaxy Konveksi",
+    "location": "Jl. Pulo Ribung No. 21, Pekayon Jaya, Bekasi Selatan",
+    "region": "Kota Bekasi",
+    "specialty": "Rompi Komunitas, Rompi Kampus, Jaket",
+    "description": "Pilihan favorit mahasiswa dan organisasi pemuda di kawasan Grand Galaxy City dan sekitarnya.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Galaxy+Konveksi+Pulo+Ribung+Pekayon+Bekasi",
+    "mapsUrl": "https://maps.google.com/?q=Galaxy+Konveksi+Pulo+Ribung+Pekayon+Bekasi",
+    "tags": [
+      "Komunitas"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 91,
+    "name": "Rends Konveksi",
+    "location": "Jl. Caman Raya Utara No. 1, Jakasampurna, Bekasi Barat",
+    "region": "Kota Bekasi",
+    "specialty": "Rompi Organisasi, Seragam Murah Custom",
+    "description": "Workshop konveksi terjangkau dengan varian pilihan kain lokal dan impor berkualitas.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Rends+Konveksi+Caman+Bekasi",
+    "mapsUrl": "https://maps.google.com/?q=Rends+Konveksi+Caman+Bekasi",
+    "tags": [
+      "Custom"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 92,
+    "name": "Nins Konveksi",
+    "location": "Jl. Caman Raya Utara VII No. 42B, Jakasampurna, Bekasi Barat",
+    "region": "Kota Bekasi",
+    "specialty": "Rompi Drill Seragam, Kemeja PDH",
+    "description": "Menitikberatkan pada kehalusan jahitan dan kenyamanan pola untuk seragam kerja kantor.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Nins+Konveksi+Caman+Raya+Bekasi",
+    "mapsUrl": "https://maps.google.com/?q=Nins+Konveksi+Caman+Raya+Bekasi",
+    "tags": [
+      "Kantor/PDH"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 93,
+    "name": "Ben Konveksi",
+    "location": "Jl. Raya Kaliabang Tengah No. 148, Bekasi Utara",
+    "region": "Kota Bekasi",
+    "specialty": "Rompi Seragam Karyawan & Pabrik",
+    "description": "Melayani pengadaan seragam karyawan dan rompi operasional pabrik di sekitar Bekasi Utara.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Ben+Konveksi+Kaliabang+Tengah+Bekasi",
+    "mapsUrl": "https://maps.google.com/?q=Ben+Konveksi+Kaliabang+Tengah+Bekasi",
+    "tags": [
+      "Pabrik"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 94,
+    "name": "DhieKonfeksi",
+    "location": "Jl. Raya Perjuangan No. 14, Harapan Baru, Bekasi Utara",
+    "region": "Kota Bekasi",
+    "specialty": "Rompi Safety Proyek, Kemeja Drill",
+    "description": "Rompi lapangan proyek tahan gesekan dengan opsi scotchlite reflektif tebal.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Dhiekonfeksi+Harapan+Baru+Bekasi",
+    "mapsUrl": "https://maps.google.com/?q=Dhiekonfeksi+Harapan+Baru+Bekasi",
+    "tags": [
+      "Safety K3"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 95,
+    "name": "Konveksi Putra Jaya Outdoor",
+    "location": "Kp. Bantar Gebang RT.001/008, Bantar Gebang, Bekasi",
+    "region": "Kota Bekasi",
+    "specialty": "Rompi Parasut, Windproof, Outdoor",
+    "description": "Spesialis rompi outdoor tahan angin untuk touring sepeda motor dan kegiatan outdoor malam hari.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Putra+Jaya+Outdoor+Bantar+Gebang+Bekasi",
+    "mapsUrl": "https://maps.google.com/?q=Putra+Jaya+Outdoor+Bantar+Gebang+Bekasi",
+    "tags": [
+      "Komunitas"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 96,
+    "name": "Zulfa Collection",
+    "location": "Jl. Lumbu Timur IIIA No. 376, Rawa Lumbu, Bekasi",
+    "region": "Kota Bekasi",
+    "specialty": "Rompi Dinas Instansi, Semi-Formal Tailor",
+    "description": "Penyedia seragam dinas, rompi instansi, dan blazer kerja dengan potongan tailor profesional.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Zulfa+Collection+Rawa+Lumbu+Bekasi",
+    "mapsUrl": "https://maps.google.com/?q=Zulfa+Collection+Rawa+Lumbu+Bekasi",
+    "tags": [
+      "Kantor/PDH"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 97,
+    "name": "Konveksi Jaket Rompi Id",
+    "location": "Jatibening, Pondok Gede, Kota Bekasi",
+    "region": "Kota Bekasi",
+    "specialty": "Rompi Lapangan EO, Rompi Komunitas",
+    "description": "Spesialis pemesanan jaket dan rompi custom online untuk seluruh area Jabodetabek.",
+    "linkLabel": "konveksijaketrompi.com",
+    "linkUrl": "https://konveksijaketrompi.com",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Jatibening+Pondok+Gede+Bekasi",
+    "tags": [
+      "Tactical",
+      "Komunitas"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 98,
+    "name": "Jatiasih Tailor & Uniform",
+    "location": "Jatisari, Jatiasih, Kota Bekasi",
+    "region": "Kota Bekasi",
+    "specialty": "Rompi Safety K3 Scotlight Reflektor",
+    "description": "Melayani rompi keselamatan dan pakaian dinas untuk wilayah selatan Kota Bekasi.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Jatiasih+Bekasi",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Jatiasih+Bekasi",
+    "tags": [
+      "Safety K3"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 99,
+    "name": "Medan Satria Industrial Apparel",
+    "location": "Pejuang, Medan Satria, Kota Bekasi",
+    "region": "Kota Bekasi",
+    "specialty": "Rompi Pabrik Pangan & Manufaktur",
+    "description": "Melayani tenant-tenant industri di koridor Sultan Agung dan Harapan Indah Medan Satria.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Medan+Satria+Pejuang+Bekasi",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Medan+Satria+Pejuang+Bekasi",
+    "tags": [
+      "Pabrik"
+    ],
+    "wa": "6281234567890"
+  },
+  {
+    "id": 100,
+    "name": "Jatisampurna Custom Garment",
+    "location": "Jatikarya, Jatisampurna, Kota Bekasi",
+    "region": "Kota Bekasi",
+    "specialty": "Rompi Tactical Outdoor & Komunitas",
+    "description": "Dekat dengan koridor Cibubur - Kranggan, spesialis rompi lapangan multi-pocket dan pakaian outdoor.",
+    "linkLabel": "Google Maps",
+    "linkUrl": "https://maps.google.com/?q=Konveksi+Jatisampurna+Bekasi",
+    "mapsUrl": "https://maps.google.com/?q=Konveksi+Jatisampurna+Bekasi",
+    "tags": [
+      "Tactical",
+      "Komunitas"
+    ],
+    "wa": "6281234567890"
+  }
+];
+
+        let currentRegion = 'ALL';
+        let currentTag = 'ALL';
+        let searchQuery = '';
+
+        const vendorGrid = document.getElementById('vendorGrid');
+        const emptyState = document.getElementById('emptyState');
+        const searchInput = document.getElementById('searchInput');
+        const clearSearchBtn = document.getElementById('clearSearch');
+        const activeCount = document.getElementById('activeCount');
+        const resultStats = document.getElementById('resultStats');
+        const resetFiltersBtn = document.getElementById('resetFilters');
+
+        // Render card
+        function renderCard(v) {
+            const tagSpans = v.tags.map(t => {
+                let cls = 'tag-pill';
+                if (t === 'Safety K3') cls += ' tag-safety';
+                else if (t === 'Tactical') cls += ' tag-tactical';
+                else if (t === 'Pabrik') cls += ' tag-pabrik';
+                return `<span class="${cls}">${t}</span>`;
+            }).join('');
+
+            return `
+            <div class="card" data-id="${v.id}">
+                <div>
+                    <div class="card-top">
+                        <span class="card-id mono">#${String(v.id).padStart(3, '0')}</span>
+                        <span class="card-region mono">${v.region}</span>
+                    </div>
+
+                    <h3 class="card-title">${v.name}</h3>
+
+                    <div class="card-location">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        <span>${v.location}</span>
+                    </div>
+
+                    <div class="card-spec">
+                        <div class="card-spec-label mono">Spesialisasi:</div>
+                        <div class="card-spec-value">${v.specialty}</div>
+                    </div>
+
+                    <p class="card-desc">${v.description}</p>
+
+                    <div class="card-tags">
+                        ${tagSpans}
+                    </div>
+                </div>
+
+                <div class="card-actions">
+                    <a href="${v.linkUrl}" target="_blank" rel="noopener" class="btn btn-primary" title="Buka website atau link katalog">
+                        🌐 ${v.linkLabel}
+                    </a>
+                    <a href="${v.mapsUrl}" target="_blank" rel="noopener" class="btn btn-maps" title="Navigasi ke Google Maps">
+                        📍 PETA MAPS
+                    </a>
+                </div>
+            </div>
+            `;
+        }
+
+        // Filter and update list
+        function filterVendors() {
+            const query = searchQuery.toLowerCase().trim();
+
+            const filtered = VENDORS.filter(v => {
+                // Region check
+                if (currentRegion !== 'ALL') {
+                    if (currentRegion === 'Karawang' && v.region !== 'Karawang') return false;
+                    if (currentRegion === 'Cikarang' && v.region !== 'Cikarang') return false;
+                    if (currentRegion === 'Tambun-Cibitung' && v.region !== 'Tambun-Cibitung') return false;
+                    if (currentRegion === 'Kota Bekasi' && v.region !== 'Kota Bekasi') return false;
+                }
+
+                // Tag check
+                if (currentTag !== 'ALL' && !v.tags.includes(currentTag)) {
+                    return false;
+                }
+
+                // Search query check
+                if (query.length > 0) {
+                    const matchName = v.name.toLowerCase().includes(query);
+                    const matchLoc = v.location.toLowerCase().includes(query);
+                    const matchSpec = v.specialty.toLowerCase().includes(query);
+                    const matchDesc = v.description.toLowerCase().includes(query);
+                    const matchTag = v.tags.some(t => t.toLowerCase().includes(query));
+                    if (!matchName && !matchLoc && !matchSpec && !matchDesc && !matchTag) {
+                        return false;
+                    }
+                }
+
+                return true;
+            });
+
+            // Render
+            if (filtered.length === 0) {
+                vendorGrid.innerHTML = '';
+                emptyState.style.display = 'block';
+            } else {
+                emptyState.style.display = 'none';
+                vendorGrid.innerHTML = filtered.map(renderCard).join('');
+            }
+
+            // Update stats
+            activeCount.innerText = filtered.length;
+            resultStats.innerText = `${filtered.length} DARI 100 VENDOR AKTIF`;
+
+            // Reset button visibility
+            if (currentRegion !== 'ALL' || currentTag !== 'ALL' || query.length > 0) {
+                resetFiltersBtn.style.display = 'inline-block';
+            } else {
+                resetFiltersBtn.style.display = 'none';
+            }
+        }
+
+        // Region Chip Click
+        document.querySelectorAll('#regionFilters .chip').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('#regionFilters .chip').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentRegion = btn.dataset.region;
+                filterVendors();
+            });
+        });
+
+        // Tag Chip Click
+        document.querySelectorAll('#tagFilters .chip').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('#tagFilters .chip').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentTag = btn.dataset.tag;
+                filterVendors();
+            });
+        });
+
+        // Search Input Handling
+        searchInput.addEventListener('input', (e) => {
+            searchQuery = e.target.value;
+            clearSearchBtn.style.display = searchQuery.length > 0 ? 'block' : 'none';
+            filterVendors();
+        });
+
+        clearSearchBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            searchQuery = '';
+            clearSearchBtn.style.display = 'none';
+            searchInput.focus();
+            filterVendors();
+        });
+
+        // Reset All
+        function resetAllFilters() {
+            currentRegion = 'ALL';
+            currentTag = 'ALL';
+            searchQuery = '';
+            searchInput.value = '';
+            clearSearchBtn.style.display = 'none';
+
+            document.querySelectorAll('#regionFilters .chip').forEach(b => {
+                b.classList.toggle('active', b.dataset.region === 'ALL');
+            });
+
+            document.querySelectorAll('#tagFilters .chip').forEach(b => {
+                b.classList.toggle('active', b.dataset.tag === 'ALL');
+            });
+
+            filterVendors();
+        }
+
+        resetFiltersBtn.addEventListener('click', resetAllFilters);
+
+        // Toast
+        function showToast(text) {
+            const t = document.getElementById('toastMessage');
+            t.innerText = text;
+            t.classList.add('show');
+            setTimeout(() => {
+                t.classList.remove('show');
+            }, 2200);
+        }
+
+        // Card Modal
+        function openModal(id) {
+            const v = VENDORS.find(item => item.id === id);
+            if (!v) return;
+
+            document.getElementById('modalId').innerText = `[#${String(v.id).padStart(3, '0')}] // ${v.region.toUpperCase()}`;
+            document.getElementById('modalTitle').innerText = v.name;
+            document.getElementById('modalLoc').innerText = `📍 ${v.location}`;
+            document.getElementById('modalSpec').innerText = v.specialty;
+            document.getElementById('modalDesc').innerText = v.description;
+
+            document.getElementById('modalTags').innerHTML = v.tags.map(t => `<span class="tag-pill">${t}</span>`).join('');
+
+            document.getElementById('modalWebBtn').href = v.linkUrl;
+            document.getElementById('modalMapsBtn').href = v.mapsUrl;
+            document.getElementById('modalWaBtn').href = `https://wa.me/${v.wa}?text=Halo%20${encodeURIComponent(v.name)},%20saya%20ingin%20konsultasi%20pembuatan%20rompi%20custom.`;
+
+            document.getElementById('detailModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('detailModal').style.display = 'none';
+        }
+
+        document.getElementById('detailModal').addEventListener('click', (e) => {
+            if (e.target.id === 'detailModal') closeModal();
+        });
+
+        // Initial render
+        filterVendors();
+    </script>
+</body>
+</html>
